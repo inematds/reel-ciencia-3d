@@ -48,7 +48,7 @@ Uma pergunta "E se…?" vira um reel vertical de ~60 s: mundo 3D (Three.js) dent
 4. ⚙️ Voz: `python3 ferramentas/voz.py --projeto exemplos/<id> exemplos/<id>/roteiro.json`
 5. ⚙️ Relógio e legenda: `python3 ferramentas/montar.py --projeto exemplos/<id>`
 6. ⚙️ Música e mistura: `python3 ferramentas/mezcla.py --projeto exemplos/<id> --id <rid> --musica tranquila` (`<rid>` = o `"id"` do roteiro.json)
-7. 🤖 Página e mundo 3D (`index.html`, `js/mundo.js`) a partir de um exemplo: `cp exemplos/terra-sem-inclinacao/{index.html,hyperframes.json,package.json} exemplos/<id>/ && cp -r exemplos/terra-sem-inclinacao/js exemplos/<id>/`.
+7. 🤖 Página e mundo 3D (`index.html`, `js/mundo.js`) a partir de um exemplo, copiados antes do passo 4: `mkdir -p exemplos/<id>/js && cp exemplos/terra-sem-inclinacao/{index.html,hyperframes.json,package.json,roteiro.json} exemplos/<id>/ && cp exemplos/terra-sem-inclinacao/js/mundo.js exemplos/<id>/js/` (não copie o `js/tempos.js`: ele é gerado pelo `montar.py`).
 8. ⚙️ `python3 ferramentas/preparar.py --projeto exemplos/<id>`
 9. ⚙️ `npx hyperframes check` → 0 erros.
 10. 🤖 Uma imagem parada por cena: `npx hyperframes snapshot --at <tempos> --no-end -o stills`
@@ -63,7 +63,7 @@ git clone https://github.com/inematds/reel-ciencia-3d && cd reel-ciencia-3d
 bash instalar.sh            # liga a skill no Claude Code/Codex e testa o HyperFrames
 ```
 
-Precisa de: Node.js 22+, ffmpeg, Claude Code (ou Codex). O HyperFrames baixa sozinho na primeira vez (`npx hyperframes doctor` diz o que falta).
+Precisa de: Node.js 22+, ffmpeg, Python 3 com numpy (`python3 -m pip install numpy`), Claude Code (ou Codex). O HyperFrames baixa sozinho na primeira vez (`npx hyperframes doctor` diz o que falta).
 Voz local (opcional): o `voz.py` usa o Chatterbox (gera a fala a partir de ~15 s da sua voz) e o Whisper (marca o tempo de cada palavra), do [inemavox](https://github.com/inematds/inemavox). Variáveis: `INEMAVOX_DIR` (pasta do inemavox), `CHATTERBOX_PYTHON` (o Python do ambiente do Chatterbox), `VC_VOZ=/caminho/sua-voz.wav`.
 Sem voz local: `python3 ferramentas/montar.py --projeto exemplos/<id> --sem-voz` estima o tempo de cada palavra pelo texto, e `mezcla.py --duracao <fim>` faz só a música; o reel sai com legenda e música.
 

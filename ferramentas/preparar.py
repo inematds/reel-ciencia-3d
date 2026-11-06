@@ -29,7 +29,8 @@ def main():
     html = (P / "index.html").read_text()
     html = re.sub(r'(data-duration=")(__FIM__|[\d.]+)(")', rf"\g<1>{fim}\g<3>", html)
     html = re.sub(r"(duration: )(__FIM__|[\d.]+)( \}, 0\))", rf"\g<1>{fim}\g<3>", html)
-    html = html.replace(f"audio/{rid}/mezcla.wav", f"audio/{rid}/final.wav")
+    # o som sempre aponta para o reel desta pasta (mesmo num index.html copiado de outro exemplo)
+    html = re.sub(r'audio/[^/"]+/(?:mezcla|final)\.wav', f"audio/{rid}/final.wav", html)
     (P / "index.html").write_text(html)
     src, dst = P / "audio" / rid / "mezcla.wav", P / "audio" / rid / "final.wav"
     ms = int(atraso * 1000)

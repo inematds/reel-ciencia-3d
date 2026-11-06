@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- Guía reel-ciencia-3d (base: template proyectos-landing-guia).
-     TRILINGÜE: este archivo y la versión PT (guia/index.html). Las versiones guia/en/index.html y
+<!-- Guía reel-ciencia-3d (base: plantilla proyectos-landing-guia).
+     TRILINGÜE: este archivo es la versión PT (guia/index.html). Las versiones guia/en/index.html y
      guia/es/index.html son copias traducidas: lang="en"/"es", selector con a.on en el idioma,
      hrefs del selector ../ y ../es/ (o ../en/), e imágenes assets/ -> ../assets/. -->
 <html lang="es">
@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>reel-ciencia-3d — reels de ciencia «¿Y si…?» hechos solo con código</title>
-<meta name="description" content="Kit y skill para Claude Code: una pregunta «¿Y si…?» se convierte en un reel vertical de ~60 s en 3D (HyperFrames + Three.js), con una fuente para cada cifra, voz local y render gratis. 3 ejemplos listos.">
+<meta name="description" content="Kit y skill para Claude Code: una pregunta «¿Y si…?» se convierte en un reel vertical de ~60 s en 3D (HyperFrames + Three.js), con fuente en cada dato, voz local y renderizado gratis. 3 ejemplos listos.">
 <link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/reel-ciencia-3d/guia/">
 <link rel="alternate" hreflang="en" href="https://inematds.github.io/reel-ciencia-3d/guia/en/">
 <link rel="alternate" hreflang="es" href="https://inematds.github.io/reel-ciencia-3d/guia/es/">
@@ -123,9 +123,9 @@
     <a class="sec" href="#fluxo">Cómo funciona</a>
     <a class="sec" href="#guia">Guía de uso</a>
     <a class="sec" href="#exemplos">Ejemplos</a>
-    <a class="sec" href="#roadmap">Próximos pasos</a>
+    <a class="sec" href="#roadmap">Próximamente</a>
     <span class="lang"><a href="../">PT</a><a href="../en/">EN</a><a class="on" href="./">ES</a></span>
-    <button class="tgl" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">🌙</button>
+    <button class="tgl" id="themeToggle" aria-label="Alternar tema" title="Alternar tema">🌙</button>
     <a class="btn" href="https://github.com/inematds/reel-ciencia-3d" target="_blank" rel="noopener">GitHub</a>
   </div>
 </div></nav>
@@ -136,37 +136,37 @@
     <div>
       <span class="chip">Kit + skill para Claude Code · 9:16</span>
       <h1>Reels de ciencia «¿Y si…?» hechos solo con <span class="amb">código</span></h1>
-      <p class="lead">Tú haces la pregunta y decides en qué confiar. Claude investiga las fuentes, arma el mundo 3D, genera la voz en tu computadora y entrega el MP4. Ninguna imagen está generada por IA y el render es gratis.</p>
+      <p class="lead">Tú haces la pregunta y decides en qué confías. Claude investiga las fuentes, construye el mundo 3D, genera la voz en tu computadora y entrega el MP4. Ninguna imagen fue dibujada por IA y el renderizado es gratis.</p>
       <div class="cta">
         <a class="btn" href="#guia">Empezar la guía</a>
         <a class="btn ghost" href="#exemplos">Ver los 3 reels</a>
       </div>
     </div>
-    <figure><img src="../assets/banner-es.jpg" alt="Banner: Ciencia en código — reels ¿Y si…? en 3D con una fuente para cada cifra"></figure>
+    <figure><img src="../assets/banner-es.jpg" alt="Banner: Ciencia en código: reels ¿Y si…? en 3D con fuente en cada dato"></figure>
   </div>
 </header>
 
 <section id="resumo" class="resumo"><div class="wrap">
   <span class="chip">En resumen</span>
-  <p>reel-ciencia-3d es un kit con una skill para Claude Code: convierte una pregunta como «¿Y si la Tierra no tuviera inclinación?» en un video vertical de unos 60 segundos para Reels, Shorts y TikTok. Está pensado para docentes, divulgadores y creadores que quieren hacer videos de ciencia sin equivocarse con las cifras. Todo se hace con código (HyperFrames para el video, Three.js para el 3D), cada cifra aparece con su fuente, la voz se genera en tu computadora y el reel vuelve al comienzo sin cortes. Necesitas Node.js, ffmpeg y Claude Code.</p>
+  <p>reel-ciencia-3d es un kit con una skill para Claude Code: convierte una pregunta como «¿Y si la Tierra no tuviera inclinación?» en un video vertical de unos 60 segundos para Reels, Shorts y TikTok. Está pensado para docentes, divulgadores y creadores que quieren hacer videos de ciencia sin equivocarse con los datos. Todo se crea con código (HyperFrames para el video, Three.js para el 3D), cada dato aparece con su fuente, la voz se genera en tu computadora y el reel vuelve al inicio sin salto. Necesitas Node.js, ffmpeg y Claude Code.</p>
 </div></section>
 
 <section id="oque"><div class="wrap">
   <span class="chip">Qué es</span>
-  <h2>Por qué usar código y no IA de video</h2>
-  <p class="sub">La ciencia exige cifras exactas. Un generador de video se equivoca en las etiquetas, cambia los gráficos de una escena a otra y cada corrección cuesta créditos. Con código, la cifra en pantalla es la que escribiste.</p>
-  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-es.jpg" alt="Banner: datos con fuentes, mundo 3D, voz local, subtítulos palabra por palabra, vuelve al comienzo, render gratis" loading="lazy" style="width:100%;display:block"></figure>
+  <h2>Por qué código y no IA de video</h2>
+  <p class="sub">La ciencia exige datos exactos. Un generador de video se equivoca en las etiquetas, cambia el gráfico de una escena a otra y cada corrección cuesta créditos. Con código, el dato que aparece en pantalla es el que escribiste.</p>
+  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-es.jpg" alt="Banner: hechos con fuentes, mundo 3D, voz local, subtítulos palabra por palabra, vuelve al inicio, renderizado gratis" loading="lazy" style="width:100%;display:block"></figure>
   <div class="grid g3">
-    <div class="card"><h3>📚 Una fuente para cada cifra</h3><p>Antes de animar, Claude escribe el <code>fatos.md</code>. Si no hay fuente (NASA, NOAA, Marina, universidad), la cifra no aparece en pantalla ni en la voz. Los cálculos propios se marcan como CÁLCULO.</p></div>
-    <div class="card"><h3>🌍 Mundo 3D con dos apariencias</h3><p>Los mismos objetos aparecen como el mundo actual y como un «plano técnico» azul del mundo «¿y si…?». Incluye un globo con los continentes reales (Natural Earth) y un solo color cálido: el amarillo del elemento principal.</p></div>
-    <div class="card"><h3>🎙️ Voz local sincronizada con cada palabra</h3><p>La voz se genera en tu computadora (Chatterbox + Whisper), con el tiempo de cada palabra. Los subtítulos, las tarjetas y la cámara entran justo cuando se dice cada palabra.</p></div>
+    <div class="card"><h3>📚 Fuente para cada dato</h3><p>Antes de animar, Claude escribe <code>fatos.md</code>. Sin fuente (NASA, NOAA, la Marina, una universidad), el dato no aparece en pantalla ni en la voz. Los cálculos propios se marcan como CÁLCULO.</p></div>
+    <div class="card"><h3>🌍 Mundo 3D con dos apariencias</h3><p>Los mismos objetos aparecen como el mundo actual y como una «planta técnica» azul del mundo «¿y si…?». Hay un globo con los continentes reales (Natural Earth) y un solo color cálido: el amarillo del elemento principal.</p></div>
+    <div class="card"><h3>🎙️ Voz local sincronizada con cada palabra</h3><p>La voz se genera en tu computadora (Chatterbox + Whisper) con el tiempo de cada palabra. Los subtítulos, las tarjetas y la cámara aparecen justo cuando se dice cada palabra.</p></div>
   </div>
 </div></section>
 
 <section id="fluxo"><div class="wrap">
   <span class="chip">Cómo funciona</span>
-  <h2>Tú diriges; Claude es el estudio</h2>
-  <p class="sub">Hay cuatro decisiones que tomas tú: la herramienta, los hechos, el mensaje y su representación visual, y la evaluación del resultado. El resto del trabajo pesado lo hacen Claude y los scripts.</p>
+  <h2>Tú diriges, Claude es el estudio</h2>
+  <p class="sub">Tú tomas cuatro decisiones: la herramienta, los datos, el mensaje con los elementos visuales y tu evaluación del resultado. Claude y los scripts se encargan del resto del trabajo pesado.</p>
   <div class="flow">
     <span>Pregunta «¿Y si…?»</span><span class="arr">→</span>
     <span>fatos.md con fuentes</span><span class="arr">→</span>
@@ -178,26 +178,27 @@
   </div>
   <div class="grid g2" style="margin-top:22px">
     <div class="card"><h3>🧠 Tú</h3><p>Eliges la pregunta y la respuesta que el reel debe demostrar, apruebas el guion, revisas las imágenes fijas y pides un cambio a la vez.</p></div>
-    <div class="card"><h3>🤖 Claude Code</h3><p>Investiga y verifica las fuentes, escribe el guion, arma la página y el 3D, genera imágenes para revisar y evalúa el MP4 con las 3 preguntas.</p></div>
-    <div class="card"><h3>📖 Términos del kit</h3><p><b>HyperFrames</b>: convierte una página HTML animada en MP4. <b>Three.js</b>: 3D en el navegador. <b>Medidor</b>: el indicador fijo en la esquina (inclinación, cronómetro). <b>Beat</b>: cada segmento del guion. <b>Plano técnico</b>: la apariencia azul del mundo «¿y si…?». <b>LUFS</b>: la medida de volumen de las redes (−14).</p></div>
-    <div class="card"><h3>⚙️ Scripts del kit</h3><p><code>voz.py</code> (voz + Whisper), <code>montar.py</code> (reloj y subtítulos), <code>mezcla.py</code> (música con código), <code>preparar.py</code> y HyperFrames para revisar y renderizar.</p></div>
+    <div class="card"><h3>🤖 Claude Code</h3><p>Investiga y verifica las fuentes, escribe el guion, crea la página y el 3D, genera las imágenes de revisión y evalúa el MP4 con las 3 preguntas.</p></div>
+    <div class="card"><h3>📖 Términos del kit</h3><p><b>HyperFrames</b>: convierte una página HTML animada en MP4. <b>Three.js</b>: 3D en el navegador. <b>Indicador</b>: medidor fijo en la esquina (inclinación, cronómetro). <b>Bloque</b>: cada parte del guion. <b>Planta técnica</b>: apariencia azul del mundo «¿y si…?». <b>LUFS</b>: medida de volumen de las redes (−14). <b>Skill</b>: instrucciones que Claude Code sigue automáticamente. <b>Whisper</b>: transcribe la voz y marca el tiempo de cada palabra.</p></div>
+    <div class="card"><h3>⚙️ Scripts del kit</h3><p><code>voz.py</code> (voz + Whisper), <code>montar.py</code> (reloj y subtítulos), <code>mezcla.py</code> (música por código), <code>preparar.py</code> y HyperFrames para revisar y renderizar.</p></div>
   </div>
 </div></section>
 
 <section id="pre"><div class="wrap">
   <span class="chip">Requisitos previos</span>
-  <h2>Qué debe estar instalado</h2>
-  <p class="sub">El render, la voz y la música se procesan en tu computadora. El único costo es tu plan de Claude.</p>
+  <h2>Qué necesitas tener instalado</h2>
+  <p class="sub">El renderizado, la voz y la música funcionan en tu computadora. El único costo es tu plan de Claude.</p>
   <div class="grid g3">
-    <div class="card"><h3>Node.js 22+ y ffmpeg</h3><p>HyperFrames se descarga automáticamente la primera vez (junto con el navegador que renderiza).</p><pre><span class="k">node</span> --version
+    <div class="card"><h3>Node.js 22+, ffmpeg y Python 3</h3><p>HyperFrames se descarga solo la primera vez (junto con el navegador que renderiza). La música por código usa numpy.</p><pre><span class="k">node</span> --version
 <span class="k">ffmpeg</span> -version
+<span class="k">python3</span> -m pip install numpy
 <span class="k">npx</span> hyperframes doctor  <span class="c"># indica qué falta</span></pre></div>
     <div class="card"><h3>Claude Code (o Codex)</h3><p><code>instalar.sh</code> conecta la skill con ambos y prueba el ejemplo.</p><pre><span class="k">git</span> clone https://github.com/inematds/reel-ciencia-3d
 <span class="k">cd</span> reel-ciencia-3d
 <span class="k">bash</span> instalar.sh</pre></div>
-    <div class="card"><h3>Voz local (opcional)</h3><p><code>voz.py</code> usa Chatterbox (genera voz a partir de unos 15 s de tu voz grabada) y Whisper (escucha y marca el tiempo de cada palabra), instalados por inemavox. Si no los tienes, usa la opción <b>sin voz</b> del paso 3.</p><pre><span class="k">export</span> INEMAVOX_DIR=<span class="s">~/inemavox</span>          <span class="c"># Whisper + worker de Chatterbox</span>
+    <div class="card"><h3>Voz local (opcional)</h3><p><code>voz.py</code> usa Chatterbox (genera la voz a partir de ~15 s de una grabación tuya) y Whisper (escucha y marca el tiempo de cada palabra), instalados mediante <a href="https://github.com/inematds/inemavox" target="_blank" rel="noopener">inemavox</a> (kit abierto de voz y transcripción local; sigue su README (en portugués)). Si no los tienes, usa el modo <b>sin voz</b> del paso 3.</p><pre><span class="k">export</span> INEMAVOX_DIR=<span class="s">~/inemavox</span>          <span class="c"># Whisper + worker de Chatterbox</span>
 <span class="k">export</span> CHATTERBOX_PYTHON=<span class="s">~/miniconda3/envs/chatterbox/bin/python3</span>
-<span class="k">export</span> VC_VOZ=<span class="s">/caminho/sua-voz.wav</span>      <span class="c"># ~15 s limpios</span></pre></div>
+<span class="k">export</span> VC_VOZ=<span class="s">/ruta/tu-voz.wav</span>      <span class="c"># ~15 s limpios</span></pre></div>
   </div>
 </div></section>
 
@@ -208,50 +209,54 @@
 
   <div class="step"><div class="b">1</div><div>
     <h3>Pega la tarjeta de solicitud con tu pregunta</h3>
-    <p>Abre Claude Code en la carpeta del kit y pega la tarjeta de <code>prompts/1-cartao-de-pedido.md</code>, cambiando la pregunta, la respuesta, los beats y el medidor.</p>
+    <p>Abre Claude Code en la carpeta del kit y pega la tarjeta de <code>prompts/1-cartao-de-pedido.md</code>, cambiando la pregunta, la respuesta, los bloques y el indicador.</p>
 <pre><span class="c"># fragmento de la tarjeta</span>
 <span class="s">Usa la skill reel-ciencia-3d. Haz un reel vertical de ~60 s: «¿Y si el día durara 48 horas?»
-1. Primero los hechos. Escribe exemplos/dia-48h/fatos.md: cada cifra con su fuente...</span></pre>
+1. Primero, los datos. Escribe exemplos/dia-48h/fatos.md: cada dato con su fuente...</span></pre>
   </div></div>
 
   <div class="step"><div class="b">2</div><div>
     <h3>Revisa fatos.md antes de cualquier escena</h3>
-    <p>Es la decisión más importante. Lee la tabla «Dejado afuera»: allí quedan las curiosidades famosas sin fuente. Tú decides en qué confiar.</p>
+    <p>Es la decisión más importante. Lee la tabla «Dejado fuera»: ahí quedan las curiosidades famosas sin fuente. Tú decides en qué confías.</p>
 <pre><span class="k">cat</span> exemplos/&lt;id&gt;/fatos.md   <span class="c"># fuente + cita + fecha en cada línea</span></pre>
   </div></div>
 
   <div class="step"><div class="b">3</div><div>
     <h3>Genera la voz, el reloj y la música</h3>
-    <p>La voz marca el ritmo del reel: cada subtítulo, tarjeta y movimiento de cámara se activa según el tiempo de las palabras. <code>&lt;rid&gt;</code> es el campo <code>"id"</code> de <code>roteiro.json</code> (en los ejemplos: <code>terra</code>, <code>sol</code>, <code>lua</code>). <code>mezcla.py</code> crea la música con código y la mezcla con la voz.</p>
-<pre><span class="c"># con voz local</span>
+    <p>La voz marca el ritmo del reel: cada subtítulo, tarjeta y movimiento de cámara se sincroniza con el tiempo de las palabras. <code>&lt;rid&gt;</code> es el campo <code>"id"</code> de <code>roteiro.json</code> (en los ejemplos: <code>terra</code>, <code>sol</code>, <code>lua</code>). <code>mezcla.py</code> crea la música por código y la mezcla con la voz.</p>
+<pre><span class="c"># carpeta nueva a partir del ejemplo (solo la página y el código 3D; la voz y el sonido se generan abajo)</span>
+<span class="k">mkdir</span> -p exemplos/&lt;id&gt;/js
+<span class="k">cp</span> exemplos/terra-sem-inclinacao/{index.html,hyperframes.json,package.json,roteiro.json} exemplos/&lt;id&gt;/
+<span class="k">cp</span> exemplos/terra-sem-inclinacao/js/mundo.js exemplos/&lt;id&gt;/js/
+<span class="c"># edita exemplos/&lt;id&gt;/roteiro.json: "id", "tela" (voz → pantalla) y los bloques b0…bN con las frases</span>
+
+<span class="c"># con voz local</span>
 <span class="k">python3</span> ferramentas/voz.py --projeto exemplos/&lt;id&gt; exemplos/&lt;id&gt;/roteiro.json
 <span class="k">python3</span> ferramentas/montar.py --projeto exemplos/&lt;id&gt;      <span class="c"># → js/tempos.js (subtítulos listos)</span>
 <span class="k">python3</span> ferramentas/mezcla.py --projeto exemplos/&lt;id&gt; --id &lt;rid&gt; --musica tranquila
 
 <span class="c"># sin voz: solo subtítulos y música (el tiempo de cada palabra se estima a partir del texto)</span>
-<span class="k">python3</span> ferramentas/montar.py --projeto exemplos/&lt;id&gt; --sem-voz   <span class="c"># muestra el «fin» en segundos</span>
-<span class="k">python3</span> ferramentas/mezcla.py --projeto exemplos/&lt;id&gt; --id &lt;rid&gt; --duracao &lt;fim&gt; --musica tranquila</pre>
+<span class="k">python3</span> ferramentas/montar.py --projeto exemplos/&lt;id&gt; --sem-voz   <span class="c"># muestra el "fin" en segundos</span>
+<span class="k">python3</span> ferramentas/mezcla.py --projeto exemplos/&lt;id&gt; --id &lt;rid&gt; --duracao &lt;fin&gt; --musica tranquila</pre>
   </div></div>
 
   <div class="step"><div class="b">4</div><div>
-    <h3>Claude arma la página y el mundo 3D</h3>
-    <p>Parte de un ejemplo listo y cambia el contenido: medidor en la parte superior, tarjetas con la línea de fuente, subtítulos y <code>js/mundo.js</code> con las escenas. Si lo haces a mano, empieza copiando el ejemplo (sin su voz ni su sonido).</p>
-<pre><span class="k">cp</span> exemplos/terra-sem-inclinacao/{index.html,hyperframes.json,package.json} exemplos/&lt;id&gt;/
-<span class="k">cp</span> -r exemplos/terra-sem-inclinacao/js exemplos/&lt;id&gt;/   <span class="c"># después cambia js/mundo.js y las tarjetas</span>
-<span class="k">python3</span> ferramentas/preparar.py --projeto exemplos/&lt;id&gt;   <span class="c"># motor + duración + sonido final</span>
+    <h3>Claude crea la página y el mundo 3D</h3>
+    <p>Cambia el contenido de la página copiada en el paso 3: indicador en la parte superior, tarjetas con la línea de la fuente y las escenas de <code>js/mundo.js</code>. <code>preparar.py</code> configura el sonido para el reel de esa carpeta.</p>
+<pre><span class="k">python3</span> ferramentas/preparar.py --projeto exemplos/&lt;id&gt;   <span class="c"># motor + duración + sonido final</span>
 <span class="k">cd</span> exemplos/&lt;id&gt; &amp;&amp; <span class="k">npx</span> hyperframes check            <span class="c"># 0 errores</span></pre>
   </div></div>
 
   <div class="step"><div class="b">5</div><div>
     <h3>Revisa una imagen por escena antes de renderizar</h3>
-    <p>Revisar una imagen toma segundos; corregir una animación terminada toma mucho más.</p>
+    <p>Revisar una imagen toma segundos; corregir una animación terminada lleva mucho más. Elige segundos que caigan en medio de cada bloque de tu reel (<code>montar.py</code> muestra el final; los bloques están en <code>js/tempos.js</code>).</p>
 <pre><span class="k">npx</span> hyperframes snapshot --at 0,5,15,25,35,45,55,67 --no-end -o stills</pre>
   </div></div>
 
   <div class="step"><div class="b">6</div><div>
     <h3>Evalúa con 3 preguntas y pide un cambio a la vez</h3>
-    <p>¿Se puede leer todo en el celular? ¿La escala es honesta? ¿Hay algo claro para mirar? Pide un solo cambio a la vez y deja todo lo demás igual.</p>
-<pre><span class="s">Cambia solo la cámara de la escena de la Antártida para que la estación aparezca completa. Mantén todo lo demás igual. Vuelve a tomar la imagen.</span></pre>
+    <p>¿Se puede leer todo en el celular? ¿La escala es honesta? ¿Hay algo claro que mirar? Pide un solo cambio a la vez y deja todo lo demás igual.</p>
+<pre><span class="s">Cambia solo la cámara de la escena de la Antártida para que se vea completa la estación. Mantén todo lo demás igual. Vuelve a generar la imagen.</span></pre>
   </div></div>
 
   <div class="step"><div class="b">7</div><div>
@@ -272,21 +277,21 @@
 <section id="exemplos"><div class="wrap">
   <span class="chip">Ejemplos</span>
   <h2>3 reels hechos con el propio kit</h2>
-  <p class="sub">Cada uno incluye <code>fatos.md</code>, <code>roteiro.json</code>, el código del mundo 3D, la voz y el sonido listos en <code>exemplos/&lt;id&gt;/</code>. El MP4 se genera con <code>npx hyperframes render</code> desde esa carpeta.</p>
+  <p class="sub">Cada uno incluye <code>fatos.md</code>, <code>roteiro.json</code>, el código del mundo 3D, la voz y el sonido listos en <code>exemplos/&lt;id&gt;/</code>. El MP4 se genera con <code>npx hyperframes render</code> dentro de la carpeta.</p>
   <div class="ex g3v">
-    <figure><video src="../assets/terra-sem-inclinacao.mp4" poster="../assets/terra-capa.jpg" controls preload="none" playsinline></video><figcaption><b>¿Y si la Tierra no tuviera inclinación?</b> Medidor 23,4° → 0°. Porto Alegre, Manaus, Estación Antártica Comandante Ferraz, el Sol rodando sobre el horizonte del polo y Júpiter. <a href="https://www.youtube.com/watch?v=3YxZzKGvzXM" target="_blank" rel="noopener">Ver en YouTube ↗</a></figcaption></figure>
+    <figure><video src="../assets/terra-sem-inclinacao.mp4" poster="../assets/terra-capa.jpg" controls preload="none" playsinline></video><figcaption><b>¿Y si la Tierra no tuviera inclinación?</b> Indicador 23,4° → 0°. Porto Alegre, Manaus, Estación Antártica Comandante Ferraz, el Sol rodando sobre el horizonte del polo y Júpiter. <a href="https://www.youtube.com/watch?v=3YxZzKGvzXM" target="_blank" rel="noopener">Ver en YouTube ↗</a></figcaption></figure>
     <figure><video src="../assets/sol-sumisse.mp4" poster="../assets/sol-capa.jpg" controls preload="none" playsinline></video><figcaption><b>¿Y si el Sol desapareciera ahora?</b> Cronómetro «tiempo sin Sol». Los 8 min 20 s que tarda la luz, la Tierra saliendo de su órbita en línea recta y la vida en las fuentes hidrotermales. <a href="https://www.youtube.com/watch?v=sdyzJweL050" target="_blank" rel="noopener">Ver en YouTube ↗</a></figcaption></figure>
-    <figure><video src="../assets/lua-sumisse.mp4" poster="../assets/lua-capa.jpg" controls preload="none" playsinline></video><figcaption><b>¿Y si la Luna desapareciera?</b> Las mareas de São Luís, los corales que desovan con la Luna y el eje de la Tierra, con una aclaración sobre lo que sigue en debate. <a href="https://www.youtube.com/watch?v=C_1Dx3azLOw" target="_blank" rel="noopener">Ver en YouTube ↗</a></figcaption></figure>
+    <figure><video src="../assets/lua-sumisse.mp4" poster="../assets/lua-capa.jpg" controls preload="none" playsinline></video><figcaption><b>¿Y si la Luna desapareciera?</b> Las mareas de São Luís, los corales que desovan con la Luna y el eje de la Tierra, con la salvedad de que aún hay aspectos en debate. <a href="https://www.youtube.com/watch?v=C_1Dx3azLOw" target="_blank" rel="noopener">Ver en YouTube ↗</a></figcaption></figure>
   </div>
 </div></section>
 
 <section id="roadmap"><div class="wrap">
-  <span class="chip">Próximos pasos</span>
-  <h2>Qué viene después</h2>
-  <p class="sub">El formato puede repetirse; el tema y la investigación, no. Cada reel debe enseñar algo nuevo.</p>
+  <span class="chip">Próximamente</span>
+  <h2>Qué sigue</h2>
+  <p class="sub">El formato se puede repetir; el tema y la investigación, no. Cada reel debe enseñar algo nuevo.</p>
   <div class="phase"><div class="tag">Ahora</div><div class="d"><strong>Kit, skill y 3 ejemplos</strong><span>Motor con dos apariencias, globo con continentes reales, voz local, subtítulos palabra por palabra y listas de verificación.</span></div></div>
-  <div class="phase"><div class="tag">Próximo</div><div class="d"><strong>Versiones EN y ES de los reels</strong><span>El mismo código, guion traducido y voz en cada idioma.</span></div></div>
-  <div class="phase"><div class="tag">Después</div><div class="d"><strong>Más escenas listas en el motor</strong><span>Océano con olas, ciudad nocturna y sistema solar a escala realista.</span></div></div>
+  <div class="phase"><div class="tag">Siguiente</div><div class="d"><strong>Versiones EN y ES de los reels</strong><span>Mismo código, guion traducido y voz en el idioma correspondiente.</span></div></div>
+  <div class="phase"><div class="tag">Después</div><div class="d"><strong>Más escenas listas en el motor</strong><span>Océano con olas, ciudad nocturna y sistema solar a una escala realista.</span></div></div>
 </div></section>
 
 <footer>
