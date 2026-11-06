@@ -1,0 +1,35 @@
+{
+  "id": "terra",
+  "pausa": 0.22,
+  "intervalo_blocos": 0.45,
+  "voz": "nei",
+  "tela": {
+    "vinte e três vírgula quatro graus": "23,4°", "23 4 graus": "23,4°", "três graus": "3°", "sete por cento": "7%",
+    "doze horas": "12 h", "dez horas": "10 h", "cinco horas": "5 h", "quase vinte": "quase 20 h",
+    "quatorze": "14 h", "doze": "12 h", "vinte": "20"
+  },
+  "destaques": ["inclinação", "sombra", "nunca", "verão", "inverno", "janeiro", "horizonte", "Júpiter", "estações", "Manaus", "equador"],
+  "blocos": [
+    {"id": "b0", "frases": [{"id": "titulo", "texto": "E se a Terra não tivesse inclinação?"}]},
+    {"id": "b1", "frases": [
+      {"id": "sombra", "texto": "A sua sombra do meio-dia nunca mudaria. Nem por um dia."},
+      {"id": "doze", "texto": "Todo dia, cerca de doze horas de luz e doze de escuro."}
+    ]},
+    {"id": "b2", "frases": [
+      {"id": "poa", "texto": "Em Porto Alegre, junho tem cerca de dez horas de sol. Dezembro, quatorze."},
+      {"id": "poa2", "texto": "Sem a inclinação, os dois teriam doze."}
+    ]},
+    {"id": "b3", "frases": [{"id": "manaus", "texto": "Manaus já vive quase assim. Perto do equador, o dia quase não muda."}]},
+    {"id": "b4", "frases": [
+      {"id": "ferraz", "texto": "Na estação brasileira da Antártida, junho tem cerca de cinco horas de luz. Dezembro, quase vinte."},
+      {"id": "ferraz2", "texto": "Sem inclinação, doze horas, o ano inteiro."}
+    ]},
+    {"id": "b5", "frases": [
+      {"id": "planeta", "texto": "No planeta todo, não haveria verão nem inverno."},
+      {"id": "janeiro", "texto": "Só cerca de sete por cento a mais de sol em janeiro, para todo mundo ao mesmo tempo."}
+    ]},
+    {"id": "b6", "frases": [{"id": "polos", "texto": "Nos polos, o Sol nunca nasceria nem se poria. Ficaria rolando no horizonte, para sempre."}]},
+    {"id": "b7", "frases": [{"id": "jupiter", "texto": "Júpiter vive quase assim. Inclinado só três graus, ele quase não tem estações."}]},
+    {"id": "b8", "frases": [{"id": "volta", "texto": "Devolva os vinte e três vírgula quatro graus, e as estações voltam."}]}
+  ]
+}

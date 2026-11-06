@@ -1,0 +1,1060 @@
+{
+ "id": "terra",
+ "duracion": 65.266,
+ "voz": "nei",
+ "pausa": 0.22,
+ "bloques": [
+  {
+   "id": "b0",
+   "inicio": 0.0,
+   "fin": 1.96
+  },
+  {
+   "id": "b1",
+   "inicio": 2.41,
+   "fin": 11.01
+  },
+  {
+   "id": "b2",
+   "inicio": 11.46,
+   "fin": 21.787
+  },
+  {
+   "id": "b3",
+   "inicio": 22.237,
+   "fin": 27.277
+  },
+  {
+   "id": "b4",
+   "inicio": 27.727,
+   "fin": 37.887
+  },
+  {
+   "id": "b5",
+   "inicio": 38.337,
+   "fin": 47.517
+  },
+  {
+   "id": "b6",
+   "inicio": 47.967,
+   "fin": 53.727
+  },
+  {
+   "id": "b7",
+   "inicio": 54.177,
+   "fin": 59.657
+  },
+  {
+   "id": "b8",
+   "inicio": 60.107,
+   "fin": 65.267
+  }
+ ],
+ "frases": [
+  {
+   "id": "titulo",
+   "bloque": "b0",
+   "texto": "E se a Terra não tivesse inclinação?",
+   "inicio": 0.0,
+   "fin": 1.78
+  },
+  {
+   "id": "sombra",
+   "bloque": "b1",
+   "texto": "A sua sombra do meio-dia nunca mudaria. Nem por um dia.",
+   "inicio": 2.41,
+   "fin": 6.15
+  },
+  {
+   "id": "doze",
+   "bloque": "b1",
+   "texto": "Todo dia, cerca de doze horas de luz e doze de escuro.",
+   "inicio": 6.55,
+   "fin": 10.83
+  },
+  {
+   "id": "poa",
+   "bloque": "b2",
+   "texto": "Em Porto Alegre, junho tem cerca de dez horas de sol. Dezembro, quatorze.",
+   "inicio": 11.46,
+   "fin": 18.717
+  },
+  {
+   "id": "poa2",
+   "bloque": "b2",
+   "texto": "Sem a inclinação, os dois teriam doze.",
+   "inicio": 18.947,
+   "fin": 21.777
+  },
+  {
+   "id": "manaus",
+   "bloque": "b3",
+   "texto": "Manaus já vive quase assim. Perto do equador, o dia quase não muda.",
+   "inicio": 22.237,
+   "fin": 27.097
+  },
+  {
+   "id": "ferraz",
+   "bloque": "b4",
+   "texto": "Na estação brasileira da Antártida, junho tem cerca de cinco horas de luz. Dezembro, quase vinte.",
+   "inicio": 27.727,
+   "fin": 34.677
+  },
+  {
+   "id": "ferraz2",
+   "bloque": "b4",
+   "texto": "Sem inclinação, doze horas, o ano inteiro.",
+   "inicio": 34.907,
+   "fin": 37.707
+  },
+  {
+   "id": "planeta",
+   "bloque": "b5",
+   "texto": "No planeta todo, não haveria verão nem inverno.",
+   "inicio": 38.337,
+   "fin": 41.937
+  },
+  {
+   "id": "janeiro",
+   "bloque": "b5",
+   "texto": "Só cerca de sete por cento a mais de sol em janeiro, para todo mundo ao mesmo tempo.",
+   "inicio": 42.337,
+   "fin": 47.337
+  },
+  {
+   "id": "polos",
+   "bloque": "b6",
+   "texto": "Nos polos, o Sol nunca nasceria nem se poria. Ficaria rolando no horizonte, para sempre.",
+   "inicio": 47.967,
+   "fin": 53.547
+  },
+  {
+   "id": "jupiter",
+   "bloque": "b7",
+   "texto": "Júpiter vive quase assim. Inclinado só três graus, ele quase não tem estações.",
+   "inicio": 54.177,
+   "fin": 59.477
+  },
+  {
+   "id": "volta",
+   "bloque": "b8",
+   "texto": "Devolva os vinte e três vírgula quatro graus, e as estações voltam.",
+   "inicio": 60.107,
+   "fin": 65.087
+  }
+ ],
+ "palabras": [
+  {
+   "texto": "E",
+   "inicio": 0.0,
+   "fin": 0.1,
+   "frase": "titulo"
+  },
+  {
+   "texto": "se",
+   "inicio": 0.1,
+   "fin": 0.2,
+   "frase": "titulo"
+  },
+  {
+   "texto": "a",
+   "inicio": 0.2,
+   "fin": 0.28,
+   "frase": "titulo"
+  },
+  {
+   "texto": "Terra",
+   "inicio": 0.28,
+   "fin": 0.58,
+   "frase": "titulo"
+  },
+  {
+   "texto": "não",
+   "inicio": 0.58,
+   "fin": 0.82,
+   "frase": "titulo"
+  },
+  {
+   "texto": "tivesse",
+   "inicio": 0.82,
+   "fin": 1.2,
+   "frase": "titulo"
+  },
+  {
+   "texto": "inclinação?",
+   "inicio": 1.2,
+   "fin": 1.78,
+   "frase": "titulo"
+  },
+  {
+   "texto": "A",
+   "inicio": 2.41,
+   "fin": 2.53,
+   "frase": "sombra"
+  },
+  {
+   "texto": "sua",
+   "inicio": 2.53,
+   "fin": 2.73,
+   "frase": "sombra"
+  },
+  {
+   "texto": "sombra",
+   "inicio": 2.73,
+   "fin": 3.27,
+   "frase": "sombra"
+  },
+  {
+   "texto": "do",
+   "inicio": 3.27,
+   "fin": 3.35,
+   "frase": "sombra"
+  },
+  {
+   "texto": "meio-dia",
+   "inicio": 3.36,
+   "fin": 3.92,
+   "frase": "sombra"
+  },
+  {
+   "texto": "nunca",
+   "inicio": 3.93,
+   "fin": 4.29,
+   "frase": "sombra"
+  },
+  {
+   "texto": "mudaria.",
+   "inicio": 4.29,
+   "fin": 4.97,
+   "frase": "sombra"
+  },
+  {
+   "texto": "Nem",
+   "inicio": 5.05,
+   "fin": 5.49,
+   "frase": "sombra"
+  },
+  {
+   "texto": "por",
+   "inicio": 5.49,
+   "fin": 5.71,
+   "frase": "sombra"
+  },
+  {
+   "texto": "um",
+   "inicio": 5.71,
+   "fin": 5.87,
+   "frase": "sombra"
+  },
+  {
+   "texto": "dia.",
+   "inicio": 5.87,
+   "fin": 6.15,
+   "frase": "sombra"
+  },
+  {
+   "texto": "Todo",
+   "inicio": 6.55,
+   "fin": 6.71,
+   "frase": "doze"
+  },
+  {
+   "texto": "dia,",
+   "inicio": 6.71,
+   "fin": 7.03,
+   "frase": "doze"
+  },
+  {
+   "texto": "cerca",
+   "inicio": 7.21,
+   "fin": 8.01,
+   "frase": "doze"
+  },
+  {
+   "texto": "de",
+   "inicio": 8.01,
+   "fin": 8.27,
+   "frase": "doze"
+  },
+  {
+   "texto": "doze",
+   "inicio": 8.28,
+   "fin": 8.56,
+   "frase": "doze"
+  },
+  {
+   "texto": "horas",
+   "inicio": 8.57,
+   "fin": 8.83,
+   "frase": "doze"
+  },
+  {
+   "texto": "de",
+   "inicio": 8.83,
+   "fin": 9.07,
+   "frase": "doze"
+  },
+  {
+   "texto": "luz",
+   "inicio": 9.07,
+   "fin": 9.35,
+   "frase": "doze"
+  },
+  {
+   "texto": "e",
+   "inicio": 9.35,
+   "fin": 9.91,
+   "frase": "doze"
+  },
+  {
+   "texto": "doze",
+   "inicio": 9.92,
+   "fin": 10.14,
+   "frase": "doze"
+  },
+  {
+   "texto": "de",
+   "inicio": 10.15,
+   "fin": 10.39,
+   "frase": "doze"
+  },
+  {
+   "texto": "escuro.",
+   "inicio": 10.39,
+   "fin": 10.83,
+   "frase": "doze"
+  },
+  {
+   "texto": "Em",
+   "inicio": 11.46,
+   "fin": 11.58,
+   "frase": "poa"
+  },
+  {
+   "texto": "Porto",
+   "inicio": 11.58,
+   "fin": 12.0,
+   "frase": "poa"
+  },
+  {
+   "texto": "Alegre,",
+   "inicio": 12.0,
+   "fin": 12.46,
+   "frase": "poa"
+  },
+  {
+   "texto": "junho",
+   "inicio": 12.5,
+   "fin": 13.04,
+   "frase": "poa"
+  },
+  {
+   "texto": "tem",
+   "inicio": 13.04,
+   "fin": 13.18,
+   "frase": "poa"
+  },
+  {
+   "texto": "cerca",
+   "inicio": 13.18,
+   "fin": 13.56,
+   "frase": "poa"
+  },
+  {
+   "texto": "de",
+   "inicio": 13.56,
+   "fin": 13.8,
+   "frase": "poa"
+  },
+  {
+   "texto": "dez",
+   "inicio": 13.81,
+   "fin": 14.13,
+   "frase": "poa"
+  },
+  {
+   "texto": "horas",
+   "inicio": 14.14,
+   "fin": 14.46,
+   "frase": "poa"
+  },
+  {
+   "texto": "de",
+   "inicio": 14.46,
+   "fin": 14.72,
+   "frase": "poa"
+  },
+  {
+   "texto": "sol.",
+   "inicio": 14.72,
+   "fin": 15.0,
+   "frase": "poa"
+  },
+  {
+   "texto": "Dezembro,",
+   "inicio": 15.66,
+   "fin": 16.3,
+   "frase": "poa"
+  },
+  {
+   "texto": "quatorze.",
+   "inicio": 16.31,
+   "fin": 18.717,
+   "frase": "poa"
+  },
+  {
+   "texto": "Sem",
+   "inicio": 18.947,
+   "fin": 19.167,
+   "frase": "poa2"
+  },
+  {
+   "texto": "a",
+   "inicio": 19.167,
+   "fin": 19.307,
+   "frase": "poa2"
+  },
+  {
+   "texto": "inclinação,",
+   "inicio": 19.307,
+   "fin": 19.747,
+   "frase": "poa2"
+  },
+  {
+   "texto": "os",
+   "inicio": 20.007,
+   "fin": 20.487,
+   "frase": "poa2"
+  },
+  {
+   "texto": "dois",
+   "inicio": 20.487,
+   "fin": 20.747,
+   "frase": "poa2"
+  },
+  {
+   "texto": "teriam",
+   "inicio": 20.747,
+   "fin": 21.167,
+   "frase": "poa2"
+  },
+  {
+   "texto": "doze.",
+   "inicio": 21.177,
+   "fin": 21.777,
+   "frase": "poa2"
+  },
+  {
+   "texto": "Manaus",
+   "inicio": 22.237,
+   "fin": 22.777,
+   "frase": "manaus"
+  },
+  {
+   "texto": "já",
+   "inicio": 22.777,
+   "fin": 22.917,
+   "frase": "manaus"
+  },
+  {
+   "texto": "vive",
+   "inicio": 22.917,
+   "fin": 23.197,
+   "frase": "manaus"
+  },
+  {
+   "texto": "quase",
+   "inicio": 23.197,
+   "fin": 23.537,
+   "frase": "manaus"
+  },
+  {
+   "texto": "assim.",
+   "inicio": 23.537,
+   "fin": 23.897,
+   "frase": "manaus"
+  },
+  {
+   "texto": "Perto",
+   "inicio": 24.377,
+   "fin": 24.937,
+   "frase": "manaus"
+  },
+  {
+   "texto": "do",
+   "inicio": 24.937,
+   "fin": 25.057,
+   "frase": "manaus"
+  },
+  {
+   "texto": "equador,",
+   "inicio": 25.057,
+   "fin": 25.537,
+   "frase": "manaus"
+  },
+  {
+   "texto": "o",
+   "inicio": 25.617,
+   "fin": 25.797,
+   "frase": "manaus"
+  },
+  {
+   "texto": "dia",
+   "inicio": 25.797,
+   "fin": 26.037,
+   "frase": "manaus"
+  },
+  {
+   "texto": "quase",
+   "inicio": 26.037,
+   "fin": 26.337,
+   "frase": "manaus"
+  },
+  {
+   "texto": "não",
+   "inicio": 26.337,
+   "fin": 26.617,
+   "frase": "manaus"
+  },
+  {
+   "texto": "muda.",
+   "inicio": 26.617,
+   "fin": 27.097,
+   "frase": "manaus"
+  },
+  {
+   "texto": "Na",
+   "inicio": 27.727,
+   "fin": 27.847,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "estação",
+   "inicio": 27.847,
+   "fin": 28.267,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "brasileira",
+   "inicio": 28.267,
+   "fin": 28.907,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "da",
+   "inicio": 28.907,
+   "fin": 29.007,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "Antártida,",
+   "inicio": 29.007,
+   "fin": 29.707,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "junho",
+   "inicio": 29.767,
+   "fin": 30.527,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "tem",
+   "inicio": 30.527,
+   "fin": 30.667,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "cerca",
+   "inicio": 30.667,
+   "fin": 31.047,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "de",
+   "inicio": 31.047,
+   "fin": 31.287,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "cinco",
+   "inicio": 31.297,
+   "fin": 31.517,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "horas",
+   "inicio": 31.527,
+   "fin": 31.827,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "de",
+   "inicio": 31.827,
+   "fin": 32.047,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "luz.",
+   "inicio": 32.047,
+   "fin": 32.267,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "Dezembro,",
+   "inicio": 32.487,
+   "fin": 33.447,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "quase",
+   "inicio": 33.447,
+   "fin": 33.687,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "vinte.",
+   "inicio": 33.697,
+   "fin": 34.677,
+   "frase": "ferraz"
+  },
+  {
+   "texto": "Sem",
+   "inicio": 34.907,
+   "fin": 35.127,
+   "frase": "ferraz2"
+  },
+  {
+   "texto": "inclinação,",
+   "inicio": 35.127,
+   "fin": 35.867,
+   "frase": "ferraz2"
+  },
+  {
+   "texto": "doze",
+   "inicio": 35.877,
+   "fin": 36.517,
+   "frase": "ferraz2"
+  },
+  {
+   "texto": "horas,",
+   "inicio": 36.527,
+   "fin": 36.907,
+   "frase": "ferraz2"
+  },
+  {
+   "texto": "o",
+   "inicio": 36.907,
+   "fin": 37.227,
+   "frase": "ferraz2"
+  },
+  {
+   "texto": "ano",
+   "inicio": 37.227,
+   "fin": 37.427,
+   "frase": "ferraz2"
+  },
+  {
+   "texto": "inteiro.",
+   "inicio": 37.427,
+   "fin": 37.707,
+   "frase": "ferraz2"
+  },
+  {
+   "texto": "No",
+   "inicio": 38.337,
+   "fin": 38.477,
+   "frase": "planeta"
+  },
+  {
+   "texto": "planeta",
+   "inicio": 38.477,
+   "fin": 38.777,
+   "frase": "planeta"
+  },
+  {
+   "texto": "todo,",
+   "inicio": 38.777,
+   "fin": 39.157,
+   "frase": "planeta"
+  },
+  {
+   "texto": "não",
+   "inicio": 39.337,
+   "fin": 39.957,
+   "frase": "planeta"
+  },
+  {
+   "texto": "haveria",
+   "inicio": 39.957,
+   "fin": 40.517,
+   "frase": "planeta"
+  },
+  {
+   "texto": "verão",
+   "inicio": 40.517,
+   "fin": 40.937,
+   "frase": "planeta"
+  },
+  {
+   "texto": "nem",
+   "inicio": 40.937,
+   "fin": 41.237,
+   "frase": "planeta"
+  },
+  {
+   "texto": "inverno.",
+   "inicio": 41.237,
+   "fin": 41.937,
+   "frase": "planeta"
+  },
+  {
+   "texto": "Só",
+   "inicio": 42.337,
+   "fin": 42.517,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "cerca",
+   "inicio": 42.517,
+   "fin": 42.837,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "de",
+   "inicio": 42.837,
+   "fin": 43.097,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "sete",
+   "inicio": 43.107,
+   "fin": 43.307,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "por",
+   "inicio": 43.327,
+   "fin": 43.527,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "cento",
+   "inicio": 43.547,
+   "fin": 43.747,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "a",
+   "inicio": 43.757,
+   "fin": 44.157,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "mais",
+   "inicio": 44.157,
+   "fin": 44.417,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "de",
+   "inicio": 44.417,
+   "fin": 44.597,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "sol",
+   "inicio": 44.597,
+   "fin": 44.797,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "em",
+   "inicio": 44.797,
+   "fin": 44.957,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "janeiro,",
+   "inicio": 44.957,
+   "fin": 45.437,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "para",
+   "inicio": 45.437,
+   "fin": 45.637,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "todo",
+   "inicio": 45.637,
+   "fin": 45.957,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "mundo",
+   "inicio": 45.957,
+   "fin": 46.397,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "ao",
+   "inicio": 46.397,
+   "fin": 46.697,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "mesmo",
+   "inicio": 46.697,
+   "fin": 46.977,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "tempo.",
+   "inicio": 46.977,
+   "fin": 47.337,
+   "frase": "janeiro"
+  },
+  {
+   "texto": "Nos",
+   "inicio": 47.967,
+   "fin": 48.107,
+   "frase": "polos"
+  },
+  {
+   "texto": "polos,",
+   "inicio": 48.107,
+   "fin": 48.727,
+   "frase": "polos"
+  },
+  {
+   "texto": "o",
+   "inicio": 48.727,
+   "fin": 49.007,
+   "frase": "polos"
+  },
+  {
+   "texto": "Sol",
+   "inicio": 49.007,
+   "fin": 49.327,
+   "frase": "polos"
+  },
+  {
+   "texto": "nunca",
+   "inicio": 49.327,
+   "fin": 49.867,
+   "frase": "polos"
+  },
+  {
+   "texto": "nasceria",
+   "inicio": 49.867,
+   "fin": 50.427,
+   "frase": "polos"
+  },
+  {
+   "texto": "nem",
+   "inicio": 50.427,
+   "fin": 50.567,
+   "frase": "polos"
+  },
+  {
+   "texto": "se",
+   "inicio": 50.567,
+   "fin": 50.767,
+   "frase": "polos"
+  },
+  {
+   "texto": "poria.",
+   "inicio": 50.767,
+   "fin": 51.187,
+   "frase": "polos"
+  },
+  {
+   "texto": "Ficaria",
+   "inicio": 51.227,
+   "fin": 51.887,
+   "frase": "polos"
+  },
+  {
+   "texto": "rolando",
+   "inicio": 51.887,
+   "fin": 52.367,
+   "frase": "polos"
+  },
+  {
+   "texto": "no",
+   "inicio": 52.367,
+   "fin": 52.487,
+   "frase": "polos"
+  },
+  {
+   "texto": "horizonte,",
+   "inicio": 52.487,
+   "fin": 52.987,
+   "frase": "polos"
+  },
+  {
+   "texto": "para",
+   "inicio": 52.987,
+   "fin": 53.167,
+   "frase": "polos"
+  },
+  {
+   "texto": "sempre.",
+   "inicio": 53.167,
+   "fin": 53.547,
+   "frase": "polos"
+  },
+  {
+   "texto": "Júpiter",
+   "inicio": 54.177,
+   "fin": 54.637,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "vive",
+   "inicio": 54.637,
+   "fin": 54.877,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "quase",
+   "inicio": 54.877,
+   "fin": 55.237,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "assim.",
+   "inicio": 55.237,
+   "fin": 55.577,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "Inclinado",
+   "inicio": 55.757,
+   "fin": 56.717,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "só",
+   "inicio": 56.717,
+   "fin": 56.857,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "três",
+   "inicio": 56.867,
+   "fin": 57.047,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "graus,",
+   "inicio": 57.057,
+   "fin": 57.697,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "ele",
+   "inicio": 57.717,
+   "fin": 58.077,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "quase",
+   "inicio": 58.077,
+   "fin": 58.357,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "não",
+   "inicio": 58.357,
+   "fin": 58.617,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "tem",
+   "inicio": 58.617,
+   "fin": 58.857,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "estações.",
+   "inicio": 58.857,
+   "fin": 59.477,
+   "frase": "jupiter"
+  },
+  {
+   "texto": "Devolva",
+   "inicio": 60.107,
+   "fin": 60.767,
+   "frase": "volta"
+  },
+  {
+   "texto": "os",
+   "inicio": 60.767,
+   "fin": 60.867,
+   "frase": "volta"
+  },
+  {
+   "texto": "vinte",
+   "inicio": 60.877,
+   "fin": 61.181,
+   "frase": "volta"
+  },
+  {
+   "texto": "e",
+   "inicio": 61.201,
+   "fin": 61.505,
+   "frase": "volta"
+  },
+  {
+   "texto": "três",
+   "inicio": 61.525,
+   "fin": 61.829,
+   "frase": "volta"
+  },
+  {
+   "texto": "vírgula",
+   "inicio": 61.849,
+   "fin": 62.153,
+   "frase": "volta"
+  },
+  {
+   "texto": "quatro",
+   "inicio": 62.173,
+   "fin": 62.477,
+   "frase": "volta"
+  },
+  {
+   "texto": "graus,",
+   "inicio": 62.487,
+   "fin": 63.187,
+   "frase": "volta"
+  },
+  {
+   "texto": "e",
+   "inicio": 63.187,
+   "fin": 63.427,
+   "frase": "volta"
+  },
+  {
+   "texto": "as",
+   "inicio": 63.427,
+   "fin": 63.787,
+   "frase": "volta"
+  },
+  {
+   "texto": "estações",
+   "inicio": 63.787,
+   "fin": 64.467,
+   "frase": "volta"
+  },
+  {
+   "texto": "voltam.",
+   "inicio": 64.467,
+   "fin": 65.087,
+   "frase": "volta"
+  }
+ ]
+}

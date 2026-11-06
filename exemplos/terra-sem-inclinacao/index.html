@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script type="importmap">{ "imports": { "three": "./motor/lib/three.module.min.js" } }</script>
+<link rel="stylesheet" href="motor/reel.css" />
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="67.97" data-width="1080" data-height="1920">
+  <canvas id="world" width="1080" height="1920"></canvas>
+
+  <!-- o aparelho: fica na tela o reel inteiro -->
+  <div id="aparelho">
+    <div class="lbl">INCLINAÇÃO DA TERRA</div>
+    <div class="linha">
+      <div id="ap-num">23,4°</div>
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="30" fill="#1a2330" stroke="#9cc3e6" stroke-width="3" />
+        <line x1="10" y1="50" x2="90" y2="50" stroke="rgba(156,195,230,.5)" stroke-width="2" stroke-dasharray="5 4" />
+        <g id="ap-eixo" transform="rotate(23.4 50 50)"><line x1="50" y1="6" x2="50" y2="94" stroke="#FACC15" stroke-width="5" stroke-linecap="round" /></g>
+      </svg>
+    </div>
+    <div class="dia"><span id="ap-dia">DIA 172</span><span id="ap-data">21 JUN</span></div>
+  </div>
+
+  <!-- título: quadro 0 (capa) e de novo no fim, para o reel voltar ao começo -->
+  <div class="titulo" data-de="0" data-ate="titulo.fim+0.6" data-sobe="nao">
+    <div class="chip">E SE…?</div>
+    <h1>E se a Terra não tivesse <em>inclinação?</em></h1>
+  </div>
+  <div class="titulo" data-de="volta.fim+0.25" data-ate="99999" data-sobe="nao">
+    <div class="chip">E SE…?</div>
+    <h1>E se a Terra não tivesse <em>inclinação?</em></h1>
+  </div>
+
+  <!-- 24 horas: hoje varia, sem inclinação é meio a meio -->
+  <div class="cartao" data-de="doze-0.1" data-ate="b2-0.2">
+    <div class="cab">UM DIA SEM INCLINAÇÃO · EM QUALQUER LUGAR</div>
+    <div class="anel"><div class="anel-meio"></div></div>
+    <div class="anel-leg"><span><i class="q"></i>≈ 12 h de luz</span><span><i></i>≈ 12 h de escuro</span></div>
+    <div class="fonte">FONTE: NASA GODDARD · NWS/NOAA</div>
+  </div>
+
+  <!-- Porto Alegre -->
+  <div class="cartao" data-de="poa+0.6" data-ate="b3-0.2">
+    <div class="cab">PORTO ALEGRE · HORAS DE SOL POR DIA</div>
+    <div class="barra" data-de="poa+1.4" data-sobe="nao"><div class="nome">JUNHO</div><div class="val"><span data-de="poa+1.4" data-ate="poa2+1.2" data-sobe="nao">≈ 10 h</span><span class="v2" data-de="poa2+1.4" data-sobe="nao">≈ 12 h</span></div>
+      <div class="trilho"><div class="enche" data-larg="0>0.4167@poa+1.5;0.4167>0.5@poa2+0.6"></div></div></div>
+    <div class="barra" data-de="poa+3.3" data-sobe="nao"><div class="nome">DEZEMBRO</div><div class="val"><span data-de="poa+3.3" data-ate="poa2+1.2" data-sobe="nao">≈ 14 h</span><span class="v2" data-de="poa2+1.4" data-sobe="nao">≈ 12 h</span></div>
+      <div class="trilho"><div class="enche" data-larg="0>0.5833@poa+3.4;0.5833>0.5@poa2+0.6"></div></div></div>
+    <div class="meio" data-de="poa2" data-sobe="nao"><span>SEM INCLINAÇÃO · 12 h</span></div>
+    <div class="fonte">CÁLCULO: EQUAÇÕES DO NOAA SOLAR CALCULATOR · 30°S</div>
+  </div>
+
+  <!-- Manaus -->
+  <div class="cartao baixo" data-de="manaus+0.8" data-ate="b4-0.2">
+    <div class="cab">MANAUS · 3°S · PERTO DO EQUADOR</div>
+    <div class="dupla"><div><small>JUNHO</small><b>≈ 12 h</b></div><div><small>DEZEMBRO</small><b>≈ 12 h</b></div></div>
+    <div class="fonte">CÁLCULO: EQUAÇÕES DO NOAA SOLAR CALCULATOR</div>
+  </div>
+
+  <!-- Estação Antártica Comandante Ferraz -->
+  <div class="cartao" data-de="ferraz+0.6" data-ate="b5-0.2">
+    <div class="cab">ESTAÇÃO ANTÁRTICA COMANDANTE FERRAZ · 62°S</div>
+    <div class="barra" data-de="ferraz+2.2" data-sobe="nao"><div class="nome">JUNHO</div><div class="val"><span data-de="ferraz+2.2" data-ate="ferraz2+1.0" data-sobe="nao">≈ 5 h</span><span class="v2" data-de="ferraz2+1.2" data-sobe="nao">≈ 12 h</span></div>
+      <div class="trilho"><div class="enche" data-larg="0>0.2083@ferraz+2.3;0.2083>0.5@ferraz2+0.5"></div></div></div>
+    <div class="barra" data-de="ferraz.fim-1.4" data-sobe="nao"><div class="nome">DEZEMBRO</div><div class="val"><span data-de="ferraz.fim-1.4" data-ate="ferraz2+1.0" data-sobe="nao">≈ 20 h</span><span class="v2" data-de="ferraz2+1.2" data-sobe="nao">≈ 12 h</span></div>
+      <div class="trilho"><div class="enche" data-larg="0>0.8333@ferraz.fim-1.3;0.8333>0.5@ferraz2+0.5"></div></div></div>
+    <div class="meio" data-de="ferraz2" data-sobe="nao"><span>SEM INCLINAÇÃO · 12 h</span></div>
+    <div class="fonte">MARINHA DO BRASIL (PROANTAR) · CÁLCULO NOAA</div>
+  </div>
+
+  <!-- janeiro: o único "verão" que sobra -->
+  <div class="cartao baixo" data-de="janeiro+0.3" data-ate="b6-0.2">
+    <div class="cab">TODO JANEIRO · PARA TODO MUNDO AO MESMO TEMPO</div>
+    <div class="grande">+7%<small>DE SOL</small></div>
+    <div class="nota">a Terra passa mais perto do Sol no começo de janeiro</div>
+    <div class="fonte">FONTE: NASA · CICLOS DE MILANKOVITCH</div>
+  </div>
+
+  <!-- Júpiter -->
+  <div class="cartao baixo" data-de="jupiter+1.6" data-ate="b8-0.2">
+    <div class="cab">INCLINAÇÃO DO EIXO</div>
+    <div class="dupla"><div><small>TERRA</small><b>23,4°</b></div><div><small>JÚPITER</small><b>3°</b></div></div>
+    <div class="fonte">FONTE: NASA · FICHAS DA TERRA E DE JÚPITER</div>
+  </div>
+
+  <div id="leg"></div>
+
+  <audio id="som" class="clip" data-start="0" data-duration="67.97" data-track-index="10" data-volume="1" src="audio/terra/final.wav"></audio>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  tl.to({}, { duration: 67.97 }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["main"] = tl;
+</script>
+<script type="module" src="js/mundo.js"></script>
+</body>
+</html>

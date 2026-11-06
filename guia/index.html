@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!-- Guia reel-ciencia-3d (base: template projetos-landing-guia).
+     TRILINGUE: este arquivo e a versao PT (guia/index.html). As versoes guia/en/index.html e
+     guia/es/index.html sao copias traduzidas: lang="en"/"es", seletor com a.on no idioma,
+     hrefs do seletor ../ e ../es/ (ou ../en/), e imagens assets/ -> ../assets/. -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>reel-ciencia-3d — reels de ciência "E se…?" feitos só com código</title>
+<meta name="description" content="Kit e skill para Claude Code: uma pergunta "E se…?" vira um reel vertical de ~60 s em 3D (HyperFrames + Three.js), com fonte em cada número, voz local e render grátis. 3 exemplos prontos.">
+<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/reel-ciencia-3d/guia/">
+<link rel="alternate" hreflang="en" href="https://inematds.github.io/reel-ciencia-3d/guia/en/">
+<link rel="alternate" hreflang="es" href="https://inematds.github.io/reel-ciencia-3d/guia/es/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#E2A23B; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#b9791d; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:20px;font-size:.92rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:rgba(226,162,59,.12)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--amb);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  @media(max-width:760px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(226,162,59,.22),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.18rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:34ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:62ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h3{font-size:1.05rem;margin-bottom:.4em}
+  .card p{color:var(--mut);font-size:.92rem;margin:0}
+  .num{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;border-radius:8px;background:rgba(226,162,59,.14);color:var(--amb);font-family:Sora;font-weight:800;font-size:.9rem;margin-bottom:.7em}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+  .flow span{background:var(--bg2);border:1px solid var(--line);border-radius:999px;padding:.45em .9em;font-size:.85rem;font-family:Sora;font-weight:600}
+  .flow .arr{color:var(--amb);border:none;background:none;padding:0 .1em}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0}
+  pre .c{color:#6f6f7c} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:26px}
+  .step>div,.card{min-width:0}
+  p code,li code,td code{overflow-wrap:anywhere}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--amb);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .7em}
+  .ex{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:680px){.ex{grid-template-columns:1fr}}
+  .ex figure{margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .ex figure img,.ex figure video{width:100%;height:auto;display:block;background:#000}
+  .ex.g3v{grid-template-columns:repeat(3,1fr)}@media(max-width:900px){.ex.g3v{grid-template-columns:1fr}}
+  .ex figcaption{padding:12px 14px;font-size:.88rem;color:var(--mut);background:var(--card)}
+  .phase{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .phase:last-child{border:none}
+  .phase .tag{flex:0 0 92px;font-family:Sora;font-weight:800;color:var(--amb)}
+  .phase .d strong{display:block;margin-bottom:.2em}
+  .phase .d span{color:var(--mut);font-size:.92rem}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:0 4px}
+</style>
+</head>
+<body>
+
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="emoji">🪐</span> reel-ciencia-3d</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#oque">O que é</a>
+    <a class="sec" href="#fluxo">Como funciona</a>
+    <a class="sec" href="#guia">Guia de uso</a>
+    <a class="sec" href="#exemplos">Exemplos</a>
+    <a class="sec" href="#roadmap">Próximos</a>
+    <span class="lang"><a class="on" href="./">PT</a><a href="en/">EN</a><a href="es/">ES</a></span>
+    <button class="tgl" id="themeToggle" aria-label="Alternar tema" title="Alternar tema">🌙</button>
+    <a class="btn" href="https://github.com/inematds/reel-ciencia-3d" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">Kit + skill para Claude Code · 9:16</span>
+      <h1>Reels de ciência "E se…?" feitos só com <span class="amb">código</span></h1>
+      <p class="lead">Você faz a pergunta e decide no que confia. O Claude pesquisa as fontes, monta o mundo 3D, gera a voz no seu computador e entrega o MP4. Nenhuma imagem desenhada por IA, e o render é grátis.</p>
+      <div class="cta">
+        <a class="btn" href="#guia">Começar o guia</a>
+        <a class="btn ghost" href="#exemplos">Ver os 3 reels</a>
+      </div>
+    </div>
+    <figure><img src="assets/banner.jpg" alt="Banner: Ciência em código — reels E se…? em 3D com fonte em cada número"></figure>
+  </div>
+</header>
+
+<section id="resumo" class="resumo"><div class="wrap">
+  <span class="chip">Em resumo</span>
+  <p>O reel-ciencia-3d é um kit com uma skill para o Claude Code: transforma uma pergunta como "E se a Terra não tivesse inclinação?" num vídeo vertical de cerca de 60 segundos para Reels, Shorts e TikTok. Serve para professor, divulgador e criador que quer vídeo de ciência sem errar número. Tudo é feito com código (HyperFrames para o vídeo, Three.js para o 3D), cada número aparece com a fonte, a voz é gerada no seu computador e o reel volta ao começo sem emenda. Você precisa de Node.js, ffmpeg e do Claude Code.</p>
+</div></section>
+
+<section id="oque"><div class="wrap">
+  <span class="chip">O que é</span>
+  <h2>Por que código, e não IA de vídeo</h2>
+  <p class="sub">Ciência pede número exato. Um gerador de vídeo erra rótulo, muda o gráfico de uma cena para outra e cada conserto custa crédito. Com código, o número da tela é o que você digitou.</p>
+  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="assets/banner-grade.jpg" alt="Banner: fatos com fonte, mundo 3D, voz local, legenda por palavra, volta ao começo, render grátis" loading="lazy" style="width:100%;display:block"></figure>
+  <div class="grid g3">
+    <div class="card"><h3>📚 Fonte em cada número</h3><p>Antes de animar, o Claude escreve o <code>fatos.md</code>. Sem fonte (NASA, NOAA, Marinha, universidade), o número não entra na tela nem na voz. Conta própria aparece como CÁLCULO.</p></div>
+    <div class="card"><h3>🌍 Mundo 3D com duas aparências</h3><p>Os mesmos objetos aparecem como o mundo de hoje e como "planta técnica" azul do mundo "e se". Tem globo com os continentes reais (Natural Earth) e só uma cor quente, o amarelo da coisa principal.</p></div>
+    <div class="card"><h3>🎙️ Voz local presa à palavra</h3><p>A voz sai do seu computador (Chatterbox + Whisper) com o tempo de cada palavra. A legenda, os cartões e a câmera entram no instante em que a palavra é dita.</p></div>
+  </div>
+</div></section>
+
+<section id="fluxo"><div class="wrap">
+  <span class="chip">Como funciona</span>
+  <h2>Você dirige, o Claude é o estúdio</h2>
+  <p class="sub">Quatro decisões ficam com você: a ferramenta, os fatos, a mensagem com o visual, e o julgamento do resultado. O resto é trabalho pesado do Claude e dos scripts.</p>
+  <div class="flow">
+    <span>Pergunta "E se…?"</span><span class="arr">→</span>
+    <span>fatos.md com fonte</span><span class="arr">→</span>
+    <span>roteiro.json</span><span class="arr">→</span>
+    <span>voz + tempo por palavra</span><span class="arr">→</span>
+    <span>mundo 3D + cartões</span><span class="arr">→</span>
+    <span>1 imagem por cena</span><span class="arr">→</span>
+    <span>MP4 1080×1920</span>
+  </div>
+  <div class="grid g3" style="margin-top:22px">
+    <div class="card"><h3>🧠 Você</h3><p>Escolhe a pergunta e a resposta que o reel tem que provar, aprova o roteiro, olha as imagens paradas e pede uma mudança por vez.</p></div>
+    <div class="card"><h3>🤖 Claude Code</h3><p>Pesquisa e confere as fontes, escreve o roteiro, monta a página e o 3D, tira as imagens de conferência e julga o MP4 com as 3 perguntas.</p></div>
+    <div class="card"><h3>⚙️ Scripts do kit</h3><p><code>voz.py</code> (voz + Whisper), <code>montar.py</code> (relógio e legenda), <code>mezcla.py</code> (música em código), <code>preparar.py</code>, e o HyperFrames para conferir e renderizar.</p></div>
+  </div>
+</div></section>
+
+<section id="pre"><div class="wrap">
+  <span class="chip">Pré-requisitos</span>
+  <h2>O que precisa estar instalado</h2>
+  <p class="sub">Render, voz e música rodam no seu computador. O único custo é o seu plano do Claude.</p>
+  <div class="grid g3">
+    <div class="card"><h3>Node.js 22+ e ffmpeg</h3><p>O HyperFrames baixa sozinho na primeira vez (com o navegador que renderiza).</p><pre><span class="k">node</span> --version
+<span class="k">ffmpeg</span> -version
+<span class="k">npx</span> hyperframes doctor  <span class="c"># diz o que falta</span></pre></div>
+    <div class="card"><h3>Claude Code (ou Codex)</h3><p>O <code>instalar.sh</code> liga a skill nos dois e testa o exemplo.</p><pre><span class="k">git</span> clone https://github.com/inematds/reel-ciencia-3d
+<span class="k">cd</span> reel-ciencia-3d
+<span class="k">bash</span> instalar.sh</pre></div>
+    <div class="card"><h3>Voz local (opcional)</h3><p>Chatterbox + Whisper rodando no computador (GPU ajuda). Para usar a sua voz, grave ~15 s limpos. Sem voz, o reel funciona com legenda e música.</p><pre><span class="k">export</span> VC_VOZ=<span class="s">/caminho/sua-voz.wav</span></pre></div>
+  </div>
+</div></section>
+
+<section id="guia"><div class="wrap">
+  <span class="chip">Guia de uso · passo a passo</span>
+  <h2>Da pergunta ao MP4 em 8 passos</h2>
+  <p class="sub">Troque <code>&lt;id&gt;</code> pelo nome da pasta do seu reel (ex.: <code>dia-48h</code>). Os 3 exemplos de <code>exemplos/</code> foram feitos exatamente assim.</p>
+
+  <div class="step"><div class="b">1</div><div>
+    <h3>Cole o cartão de pedido com a sua pergunta</h3>
+    <p>Abra o Claude Code na pasta do kit e cole o cartão de <code>prompts/1-cartao-de-pedido.md</code>, trocando a pergunta, a resposta, as batidas e o aparelho.</p>
+<pre><span class="c"># trecho do cartão</span>
+<span class="s">Use a skill reel-ciencia-3d. Faça um reel vertical de ~60 s: "E se o dia durasse 48 horas?"
+1. Fatos primeiro. Escreva exemplos/dia-48h/fatos.md: cada número com fonte...</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">2</div><div>
+    <h3>Confira o fatos.md antes de qualquer cena</h3>
+    <p>É a decisão mais importante. Leia a tabela "Deixado de fora": é lá que ficam as curiosidades famosas sem fonte. Você decide no que confia.</p>
+<pre><span class="k">cat</span> exemplos/&lt;id&gt;/fatos.md   <span class="c"># fonte + citação + data em cada linha</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">3</div><div>
+    <h3>Gere a voz, o relógio e a música</h3>
+    <p>A voz é o relógio do reel: cada legenda, cartão e movimento de câmera sai do tempo das palavras.</p>
+<pre><span class="k">python3</span> ferramentas/voz.py --projeto exemplos/&lt;id&gt; exemplos/&lt;id&gt;/roteiro.json
+<span class="k">python3</span> ferramentas/montar.py --projeto exemplos/&lt;id&gt;      <span class="c"># → js/tempos.js (legenda pronta)</span>
+<span class="k">python3</span> ferramentas/mezcla.py --projeto exemplos/&lt;id&gt; --id &lt;id-do-roteiro&gt; --musica tranquila</pre>
+  </div></div>
+
+  <div class="step"><div class="b">4</div><div>
+    <h3>O Claude monta a página e o mundo 3D</h3>
+    <p>Ele parte de um exemplo pronto e troca o conteúdo: aparelho no topo, cartões com a linha de fonte, legenda e o <code>js/mundo.js</code> com as cenas.</p>
+<pre><span class="k">python3</span> ferramentas/preparar.py --projeto exemplos/&lt;id&gt;   <span class="c"># motor + duração + som final</span>
+<span class="k">cd</span> exemplos/&lt;id&gt; &amp;&amp; <span class="k">npx</span> hyperframes check            <span class="c"># 0 erros</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">5</div><div>
+    <h3>Olhe uma imagem por cena antes de renderizar</h3>
+    <p>Conferir uma imagem leva segundos; consertar uma animação pronta leva muito mais.</p>
+<pre><span class="k">npx</span> hyperframes snapshot --at 0,5,15,25,35,45,55,67 --no-end -o stills</pre>
+  </div></div>
+
+  <div class="step"><div class="b">6</div><div>
+    <h3>Julgue com 3 perguntas e peça uma mudança por vez</h3>
+    <p>Dá para ler tudo no celular? A escala é honesta? Há uma coisa clara para olhar? Peça só uma mudança de cada vez, deixando o resto igual.</p>
+<pre><span class="s">Mude só a câmera da cena da Antártida para a estação aparecer inteira. Mantenha todo o resto. Tire a imagem de novo.</span></pre>
+  </div></div>
+
+  <div class="step"><div class="b">7</div><div>
+    <h3>Renderize</h3>
+    <p>Cerca de 5 minutos para um reel de 65 s, no seu computador.</p>
+<pre><span class="k">npx</span> hyperframes render --output renders/&lt;id&gt;.mp4</pre>
+  </div></div>
+
+  <div class="step"><div class="b">8</div><div>
+    <h3>Julgue o MP4 de verdade e publique</h3>
+    <p>Quadros do arquivo final, não da prévia. Confira medidas e volume e passe o <code>checklists/antes-de-publicar.md</code>.</p>
+<pre><span class="k">ffmpeg</span> -i renders/&lt;id&gt;.mp4 -vf fps=1/3,scale=216:-1,tile=8x3 renders/folha.jpg
+<span class="k">ffprobe</span> renders/&lt;id&gt;.mp4                      <span class="c"># 1080x1920, 30 fps</span>
+<span class="k">ffmpeg</span> -i renders/&lt;id&gt;.mp4 -af ebur128 -f null -   <span class="c"># ≈ −14 LUFS</span></pre>
+  </div></div>
+</div></section>
+
+<section id="exemplos"><div class="wrap">
+  <span class="chip">Exemplos</span>
+  <h2>3 reels feitos com o próprio kit</h2>
+  <p class="sub">Cada um tem <code>fatos.md</code>, <code>roteiro.json</code>, o código do mundo 3D e o MP4 em <code>exemplos/&lt;id&gt;/renders/</code>.</p>
+  <div class="ex g3v">
+    <figure><video src="assets/terra-sem-inclinacao.mp4" poster="assets/terra-capa.jpg" controls preload="none" playsinline></video><figcaption><b>E se a Terra não tivesse inclinação?</b> Aparelho 23,4° → 0°. Porto Alegre, Manaus, Estação Antártica Comandante Ferraz, o Sol rolando no horizonte do polo e Júpiter.</figcaption></figure>
+    <figure><video src="assets/sol-sumisse.mp4" poster="assets/sol-capa.jpg" controls preload="none" playsinline></video><figcaption><b>E se o Sol sumisse agora?</b> Cronômetro "tempo sem Sol". Os 8 min 20 s da luz, a Terra saindo da órbita em linha reta e a vida nas fontes hidrotermais.</figcaption></figure>
+    <figure><video src="assets/lua-sumisse.mp4" poster="assets/lua-capa.jpg" controls preload="none" playsinline></video><figcaption><b>E se a Lua sumisse?</b> As marés de São Luís, os corais que desovam pela Lua e o eixo da Terra, com a ressalva do que ainda se discute.</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="roadmap"><div class="wrap">
+  <span class="chip">Próximos</span>
+  <h2>O que vem depois</h2>
+  <p class="sub">O formato pode repetir; o assunto e a pesquisa, não. Cada reel tem que ensinar algo novo.</p>
+  <div class="phase"><div class="tag">Agora</div><div class="d"><strong>Kit, skill e 3 exemplos</strong><span>Motor com duas aparências, globo com continentes reais, voz local, legenda por palavra, checklists.</span></div></div>
+  <div class="phase"><div class="tag">Próximo</div><div class="d"><strong>Versões EN e ES dos reels</strong><span>Mesmo código, roteiro traduzido e voz no idioma.</span></div></div>
+  <div class="phase"><div class="tag">Depois</div><div class="d"><strong>Mais cenas prontas no motor</strong><span>Oceano com ondas, cidade noturna e sistema solar em escala honesta.</span></div></div>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="pill">HyperFrames</div><div class="pill">Three.js</div><div class="pill">Chatterbox + Whisper</div><div class="pill">Natural Earth</div>
+    <p style="margin-top:18px">reel-ciencia-3d · conteúdo aberto e gratuito ·
+      <a href="https://github.com/inematds/reel-ciencia-3d">inematds/reel-ciencia-3d</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var KEY='reel-ciencia-3d-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; }
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      localStorage.setItem(KEY, light?'light':'dark');
+    });
+  })();
+</script>
+</body>
+</html>

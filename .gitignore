@@ -1,0 +1,10 @@
+node_modules/
+.hyperframes/
+**/voz/*/cache/
+**/audio/*/mezcla.wav
+**/stills*/
+*.part
+**/renders/
+guia/assets/*.codex.log
+guia/assets/banner*.png
+longrun/
