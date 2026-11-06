@@ -94,8 +94,8 @@ caminho.rotation.x = -Math.PI / 2; caminho.position.set(3.2, 0.02, -40); campo.a
 const marcas = new THREE.Group(); campo.add(marcas);
 function marca(len, txt) {
   const linha = new THREE.Mesh(new THREE.PlaneGeometry(0.08, len), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0 }));
-  linha.rotation.x = -Math.PI / 2; linha.position.set(0.9, 0.03, len / 2); marcas.add(linha);
-  const fim = new THREE.Mesh(new THREE.PlaneGeometry(0.7, 0.08), linha.material); fim.rotation.x = -Math.PI / 2; fim.position.set(0.9, 0.03, len); marcas.add(fim);
+  linha.rotation.x = -Math.PI / 2; linha.position.set(0, 0.03, len / 2); marcas.add(linha);
+  const fim = new THREE.Mesh(new THREE.PlaneGeometry(0.7, 0.08), linha.material); fim.rotation.x = -Math.PI / 2; fim.position.set(0, 0.03, len); marcas.add(fim);
   const l = rotulo(txt, { tam: 44, largura: 1.5 }); l.position.set(2.0, 0.3, len); marcas.add(l);
   return { mat: linha.material, l };
 }
@@ -117,7 +117,7 @@ for (let i = 0; i < 70; i++) {
 }
 const usina = solido(new THREE.BoxGeometry(16, 9, 10), mat(0xa0522d, COR.eseFill2)); usina.position.set(18, 4.5, 2); cidade.add(usina);
 const chamine = solido(new THREE.CylinderGeometry(1.1, 1.8, 42, 12), mat(0xa0522d, COR.eseFill2)); chamine.position.set(26, 21, 2); cidade.add(chamine);
-const rotPoa = rotulo('PORTO ALEGRE · 30°S', { tam: 44, largura: 26 }); rotPoa.position.set(-30, 52, 0); cidade.add(rotPoa);
+const rotPoa = rotulo('PORTO ALEGRE · 30°S', { tam: 44, largura: 34 }); rotPoa.position.set(-40, 92, 30); cidade.add(rotPoa);
 
 // GLOBO (cenas 3 e 5) — continentes reais (Natural Earth)
 const R = 3;
@@ -133,7 +133,7 @@ const tropN = paralelo(23.4, COR.amarelo, 0.9), tropS = paralelo(-23.4, COR.amar
 const polN = paralelo(66.6, 0x9cc3e6, 0.8), polS = paralelo(-66.6, 0x9cc3e6, 0.8);
 function poeLat(m, lat) { m.position.y = R * Math.sin(lat * D2R); const s = Math.max(1e-3, Math.cos(lat * D2R)); m.scale.set(s, s, 1); }
 const pinos = {};
-for (const [id, lat, lon, txt] of [['poa', -30.03, -51.23, 'PORTO ALEGRE'], ['manaus', -3.12, -60.02, 'MANAUS'], ['ferraz', -62.08, -58.4, 'EST. FERRAZ']]) {
+for (const [id, lat, lon, txt] of [['poa', -30.03, -51.23, 'PORTO ALEGRE'], ['manaus', -3.12, -60.02, 'MANAUS · ≈ 12 h O ANO TODO'], ['ferraz', -62.08, -58.4, 'EST. FERRAZ']]) {
   const p = new THREE.Mesh(new THREE.SphereGeometry(0.055, 16, 8), new THREE.MeshBasicMaterial({ color: id === 'manaus' ? COR.amarelo : 0xffffff }));
   p.position.copy(noGlobo(lat, lon, R * 1.01)); globoG.add(p);
   const l = rotulo(txt, { tam: 40, largura: 1.9 }); l.position.copy(noGlobo(lat, lon, R * 1.01)).add(v3(1.1, 0.16, 0.3)); globoG.add(l);
@@ -160,7 +160,61 @@ for (let i = 0; i < 6; i++) {
   mod.position.set(-14 + i * 6.3, 2.6, 8 + (i % 2) * 0.6); anta.add(mod);
   const pe = solido(new THREE.BoxGeometry(5.6, 1, 0.4), mat(0x555a60, COR.eseFill)); pe.position.set(-14 + i * 6.3, 0.5, 8); anta.add(pe);
 }
-const rotFerraz = rotulo('ESTAÇÃO FERRAZ · 62°S', { tam: 44, largura: 9 }); rotFerraz.position.set(4, 13, 8); anta.add(rotFerraz);
+const rotFerraz = rotulo('ESTAÇÃO FERRAZ · 62°S', { tam: 44, largura: 15 }); rotFerraz.position.set(-6, 36, 8); anta.add(rotFerraz);
+
+// CÚPULA DO CÉU (cenas 2 e 4) — o caminho do Sol em junho e em dezembro, que vira um só sem inclinação
+function cupula(lat, raio, rotJ, rotD, rotIgual) {
+  const g = new THREE.Group();
+  const linha = (op) => new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: op, depthWrite: false });
+  const horiz = new THREE.Mesh(new THREE.TorusGeometry(raio, raio * 0.006, 6, 160), linha(0.7)); horiz.rotation.x = Math.PI / 2; g.add(horiz);
+  for (const a of [0, Math.PI / 2]) { const m = new THREE.Mesh(new THREE.TorusGeometry(raio, raio * 0.003, 4, 120, Math.PI), linha(0.28)); m.rotation.y = a; g.add(m); }
+  const casca = new THREE.Mesh(new THREE.SphereGeometry(raio, 48, 24, 0, Math.PI * 2, 0, Math.PI / 2),
+    new THREE.MeshBasicMaterial({ color: 0x9cc3e6, transparent: true, opacity: 0.07, side: THREE.DoubleSide, depthWrite: false }));
+  g.add(casca);
+  const matJ = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.95 });
+  const matD = new THREE.MeshBasicMaterial({ color: COR.amarelo, transparent: true, opacity: 0.95 });
+  const arcos = [new THREE.Mesh(new THREE.BufferGeometry(), matJ), new THREE.Mesh(new THREE.BufferGeometry(), matD)];
+  arcos.forEach((a) => g.add(a));
+  const bola = new THREE.Mesh(new THREE.SphereGeometry(raio * 0.05, 24, 12), new THREE.MeshBasicMaterial({ color: COR.amarelo })); g.add(bola);
+  const lJ = rotulo(rotJ, { tam: 44, largura: raio * 0.62 }), lD = rotulo(rotD, { tam: 44, largura: raio * 0.62, cor: '#FACC15' });
+  const lI = rotulo(rotIgual, { tam: 44, largura: raio * 0.9, cor: '#FACC15' });
+  g.add(lJ, lD, lI);
+  const pontos = (dec) => {
+    const c = clamp(-Math.tan(lat * D2R) * Math.tan(dec * D2R), -1, 1), H0 = Math.acos(c);
+    const n = 64, out = [];
+    for (let k = 0; k <= n; k++) out.push(sol(lat, lerp(-H0, H0, k / n), dec).multiplyScalar(raio));
+    return out;
+  };
+  const topo = (pts) => pts.reduce((a, b) => (b.y > a.y ? b : a));
+  // junta: 0 = arcos de hoje (±23,4°), 1 = os dois viraram o do equinócio (0°)
+  g.userData.set = (junta, sol01, qual, op) => {
+    const decs = [23.4 * (1 - junta), -23.4 * (1 - junta)]; // junho (δ +), dezembro (δ −) — hemisfério sul
+    const pts = decs.map(pontos);
+    arcos.forEach((a, k) => { a.geometry.dispose(); a.geometry = new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts[k]), 80, raio * 0.012, 6); });
+    matJ.opacity = 0.95 * op; matD.opacity = 0.95 * op;
+    const tJ = topo(pts[0]), tD = topo(pts[1]);
+    lJ.position.copy(tJ).add(v3(0, raio * 0.1, 0)); lD.position.copy(tD).add(v3(0, raio * 0.12, 0));
+    lI.position.copy(tD).add(v3(0, raio * 0.14, 0));
+    const pa = pts[qual]; const idx = Math.min(pa.length - 1, Math.floor(sol01 * (pa.length - 1)));
+    bola.position.copy(pa[idx]); bola.visible = op > 0.05;
+    return { lJ, lD, lI };
+  };
+  [horiz, casca].forEach((m) => (m.userData.op = m.material.opacity));
+  g.userData.fade = (op) => { horiz.material.opacity = 0.7 * op; casca.material.opacity = 0.07 * op; };
+  return g;
+}
+const cupPoa = cupula(-30, 70, 'JUN · ≈ 10 h', 'DEZ · ≈ 14 h', 'SEM INCLINAÇÃO · ≈ 12 h'); cupPoa.position.set(0, 0, 20); cidade.add(cupPoa);
+const cupFerraz = cupula(-62, 26, 'JUN · ≈ 5 h', 'DEZ · ≈ 20 h', 'SEM INCLINAÇÃO · ≈ 12 h'); cupFerraz.position.set(4, 0, 8); anta.add(cupFerraz);
+// marca o ritmo da cena da cúpula: hoje (junho → dezembro) e depois sem inclinação
+function animaCupula(c, t, fJun, fDez, fJunta) {
+  const tJ = palavra(fJun[0], fJun[1]), tD = palavra(fDez[0], fDez[1]), tI = F[fJunta].ini;
+  const junta = io(ramp(t, tI + 0.2, tI + 1.6));
+  const qual = t < tD - 0.2 ? 0 : 1;
+  const ini = qual === 0 ? tJ - 0.3 : tD - 0.3, fim = qual === 0 ? tD - 0.3 : tI + 2.5;
+  const r = c.userData.set(junta, ramp(t, ini, fim), junta > 0.5 ? 1 : qual, 1);
+  r.lJ.material.opacity = win(t, tJ - 0.2, tI + 0.4) ; r.lD.material.opacity = win(t, tD - 0.2, tI + 0.4);
+  r.lI.material.opacity = out3(ramp(t, tI + 1.2, tI + 1.7));
+}
 
 // POLO (cena 6)
 const polo = new THREE.Group(); scene.add(polo);
@@ -184,7 +238,8 @@ const faixas = (() => {
 const jupiter = new THREE.Mesh(new THREE.SphereGeometry(3, 96, 48), new THREE.MeshStandardMaterial({ map: faixas, roughness: 0.95 })); jup.add(jupiter);
 const eixoJ = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 9, 8), anelMat(COR.amarelo, 1)); jup.add(eixoJ);
 const vertJ = new THREE.Mesh(new THREE.CylinderGeometry(0.015, 0.015, 9, 6), anelMat(0xffffff, 0.5)); jup.add(vertJ);
-const rotJ = rotulo('JÚPITER · 3°', { tam: 48, largura: 3.4, cor: '#FACC15' }); rotJ.position.set(2.0, 4.8, 0); jup.add(rotJ);
+const rotJ = rotulo('JÚPITER · 3°', { tam: 48, largura: 3.4, cor: '#FACC15' }); rotJ.position.set(0, 5.6, 0); jup.add(rotJ);
+const rotJT = rotulo('TERRA HOJE · 23,4°', { tam: 40, largura: 3.0 }); rotJT.position.set(0, 4.85, 0); jup.add(rotJT);
 
 const GRUPOS = [campo, cidade, giro, anta, polo, jup];
 const so = (...gs) => GRUPOS.forEach((g) => (g.visible = gs.includes(g)));
@@ -240,8 +295,10 @@ function renderAt(t) {
     const s = sol(-30, lerp(1.05, 1.25, fase), declinacao(d, i)); // fim de tarde
     luz.position.copy(s.clone().multiplyScalar(300)); luz.target.position.set(0, 0, 0);
     discoSol.position.copy(s.clone().multiplyScalar(1500)); discoSol.scale.setScalar(40);
-    cam(v3(lerp(-40, -20, io(fase)), lerp(28, 22, fase), lerp(160, 135, io(fase))), v3(0, 18, 0), 42);
-    rotPoa.material.opacity = win(t, CORTES[2] + 0.2, F.poa.ini + 1.4);
+    cam(v3(lerp(150, 125, io(fase)), lerp(150, 135, fase), lerp(345, 315, io(fase))), v3(0, 22, 0), 42);
+    rotPoa.material.opacity = win(t, CORTES[2] + 0.2, F.poa.ini + 1.2);
+    animaCupula(cupPoa, t, ['poa', 'junho'], ['poa', 'dezembro'], 'poa2');
+    discoSol.visible = false; hemi.intensity = 1.1;
   } else if (k === 3 || k === 5) {
     so(giro); estrelas.visible = true; ceuDome.mesh.visible = false; scene.background = new THREE.Color(0x05070c);
     hemi.intensity = 1.1; luz.intensity = 2.4;
@@ -277,8 +334,10 @@ function renderAt(t) {
     const s = sol(-62, lerp(-1.0, -0.8, fase), -23.4 * (1 - m)); // junho: Sol baixo
     luz.position.copy(s.clone().multiplyScalar(300)); luz.target.position.set(0, 0, 0);
     discoSol.position.copy(s.clone().multiplyScalar(1500)); discoSol.scale.setScalar(36);
-    cam(v3(lerp(30, 18, io(fase)), lerp(10, 8, fase), lerp(70, 54, io(fase))), v3(0, 5, 0), 42);
-    rotFerraz.material.opacity = win(t, CORTES[4] + 0.2, F.ferraz.ini + 1.8);
+    cam(v3(lerp(58, 50, io(fase)), lerp(60, 54, fase), lerp(128, 116, io(fase))), v3(4, 6, 0), 42);
+    rotFerraz.material.opacity = win(t, CORTES[4] + 0.2, F.ferraz.ini + 1.6);
+    animaCupula(cupFerraz, t, ['ferraz', 'junho'], ['ferraz', 'dezembro'], 'ferraz2');
+    discoSol.visible = false;
   } else if (k === 6) {
     so(polo);
     const fase = ramp(t, CORTES[6], CORTES[7]);
@@ -301,7 +360,8 @@ function renderAt(t) {
     eixoJ.material.opacity = out3(ramp(t, palavra('jupiter', 'inclinado') - 0.2, palavra('jupiter', 'inclinado') + 0.4));
     vertJ.material.opacity = 0.5 * eixoJ.material.opacity;
     rotJ.material.opacity = win(t, palavra('jupiter', 'três') - 0.1, CORTES[8]);
-    cam(v3(0, -0.6, lerp(21, 18.5, io(fase))), v3(0, -0.8, 0), 38);
+    rotJT.material.opacity = 0.85 * win(t, palavra('jupiter', 'três') + 0.4, CORTES[8]);
+    cam(v3(0, -0.4, lerp(25, 22.5, io(fase))), v3(0, 0.6, 0), 38);
   }
   if (!estrelas.visible) scene.background = null;
 
