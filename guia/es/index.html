@@ -198,7 +198,8 @@
 <span class="k">bash</span> instalar.sh</pre></div>
     <div class="card"><h3>Voz local (opcional)</h3><p><code>voz.py</code> usa Chatterbox (genera la voz a partir de ~15 s de una grabación tuya) y Whisper (escucha y marca el tiempo de cada palabra), instalados mediante <a href="https://github.com/inematds/inemavox" target="_blank" rel="noopener">inemavox</a> (kit abierto de voz y transcripción local; sigue su README (en portugués)). Si no los tienes, usa el modo <b>sin voz</b> del paso 3.</p><pre><span class="k">export</span> INEMAVOX_DIR=<span class="s">~/inemavox</span>          <span class="c"># Whisper + worker de Chatterbox</span>
 <span class="k">export</span> CHATTERBOX_PYTHON=<span class="s">~/miniconda3/envs/chatterbox/bin/python3</span>
-<span class="k">export</span> VC_VOZ=<span class="s">/ruta/tu-voz.wav</span>      <span class="c"># ~15 s limpios</span></pre></div>
+<span class="k">export</span> VC_VOZ=<span class="s">/ruta/tu-voz.wav</span>      <span class="c"># ~15 s limpios</span>
+<span class="k">export</span> VC_IDIOMA=<span class="s">es</span>                <span class="c"># idioma de la voz y la alineación (por defecto: pt)</span></pre></div>
   </div>
 </div></section>
 
@@ -209,7 +210,7 @@
 
   <div class="step"><div class="b">1</div><div>
     <h3>Pega la tarjeta de solicitud con tu pregunta</h3>
-    <p>Abre Claude Code en la carpeta del kit y pega la tarjeta de <code>prompts/1-cartao-de-pedido.md</code>, cambiando la pregunta, la respuesta, los bloques y el indicador.</p>
+    <p>Abre Claude Code en la carpeta del kit y pega la tarjeta de <code>prompts/1-cartao-de-pedido.md</code> (en portugués), cambiando la pregunta, la respuesta, los bloques y el indicador.</p>
 <pre><span class="c"># fragmento de la tarjeta</span>
 <span class="s">Usa la skill reel-ciencia-3d. Haz un reel vertical de ~60 s: «¿Y si el día durara 48 horas?»
 1. Primero, los datos. Escribe exemplos/dia-48h/fatos.md: cada dato con su fuente...</span></pre>
@@ -267,7 +268,7 @@
 
   <div class="step"><div class="b">8</div><div>
     <h3>Evalúa el MP4 final y publícalo</h3>
-    <p>Revisa fotogramas del archivo final, no de la vista previa. Comprueba las dimensiones y el volumen, y sigue <code>checklists/antes-de-publicar.md</code>.</p>
+    <p>Revisa fotogramas del archivo final, no de la vista previa. Comprueba las dimensiones y el volumen, y sigue <code>checklists/antes-de-publicar.md</code> (en portugués).</p>
 <pre><span class="k">ffmpeg</span> -i renders/&lt;id&gt;.mp4 -vf fps=1/3,scale=216:-1,tile=8x3 renders/folha.jpg
 <span class="k">ffprobe</span> renders/&lt;id&gt;.mp4                      <span class="c"># 1080x1920, 30 fps</span>
 <span class="k">ffmpeg</span> -i renders/&lt;id&gt;.mp4 -af ebur128 -f null -   <span class="c"># ≈ −14 LUFS</span></pre>
@@ -277,7 +278,7 @@
 <section id="exemplos"><div class="wrap">
   <span class="chip">Ejemplos</span>
   <h2>3 reels hechos con el propio kit</h2>
-  <p class="sub">Cada uno incluye <code>fatos.md</code>, <code>roteiro.json</code>, el código del mundo 3D, la voz y el sonido listos en <code>exemplos/&lt;id&gt;/</code>. El MP4 se genera con <code>npx hyperframes render</code> dentro de la carpeta.</p>
+  <p class="sub">Cada uno incluye <code>fatos.md</code>, <code>roteiro.json</code>, el código del mundo 3D, la voz y el sonido listos en <code>exemplos/&lt;id&gt;/</code>. El MP4 se genera con <code>npx hyperframes render</code> dentro de la carpeta. Los 3 reels están narrados en portugués.</p>
   <div class="ex g3v">
     <figure><video src="../assets/terra-sem-inclinacao.mp4" poster="../assets/terra-capa.jpg" controls preload="none" playsinline></video><figcaption><b>¿Y si la Tierra no tuviera inclinación?</b> Indicador 23,4° → 0°. Porto Alegre, Manaus, Estación Antártica Comandante Ferraz, el Sol rodando sobre el horizonte del polo y Júpiter. <a href="https://www.youtube.com/watch?v=3YxZzKGvzXM" target="_blank" rel="noopener">Ver en YouTube ↗</a></figcaption></figure>
     <figure><video src="../assets/sol-sumisse.mp4" poster="../assets/sol-capa.jpg" controls preload="none" playsinline></video><figcaption><b>¿Y si el Sol desapareciera ahora?</b> Cronómetro «tiempo sin Sol». Los 8 min 20 s que tarda la luz, la Tierra saliendo de su órbita en línea recta y la vida en las fuentes hidrotermales. <a href="https://www.youtube.com/watch?v=sdyzJweL050" target="_blank" rel="noopener">Ver en YouTube ↗</a></figcaption></figure>

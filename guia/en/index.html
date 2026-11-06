@@ -198,14 +198,15 @@
 <span class="k">bash</span> instalar.sh</pre></div>
     <div class="card"><h3>Local voice (optional)</h3><p><code>voz.py</code> uses Chatterbox (generates voice from about 15 seconds of your recorded voice) and Whisper (listens and marks the timing of each word), installed via <a href="https://github.com/inematds/inemavox" target="_blank" rel="noopener">inemavox</a> (an open kit for local voice and transcription; follow its README, in Portuguese). Without them, use the <b>no-voice</b> path in step 3.</p><pre><span class="k">export</span> INEMAVOX_DIR=<span class="s">~/inemavox</span>          <span class="c"># Whisper + Chatterbox worker</span>
 <span class="k">export</span> CHATTERBOX_PYTHON=<span class="s">~/miniconda3/envs/chatterbox/bin/python3</span>
-<span class="k">export</span> VC_VOZ=<span class="s">/path/your-voice.wav</span>      <span class="c"># about 15 clean seconds</span></pre></div>
+<span class="k">export</span> VC_VOZ=<span class="s">/path/your-voice.wav</span>      <span class="c"># about 15 clean seconds</span>
+<span class="k">export</span> VC_IDIOMA=<span class="s">en</span>                <span class="c"># voice and alignment language (default: pt)</span></pre></div>
   </div>
 </div></section>
 
 <section id="guia"><div class="wrap">
   <span class="chip">Step-by-step user guide</span>
   <h2>From question to MP4 in 8 steps</h2>
-  <p class="sub">Replace <code>&lt;id&gt;</code> with your reel’s folder name (e.g., <code>day-48h</code>). The 3 examples in <code>exemplos/</code> were made exactly this way.</p>
+  <p class="sub">Replace <code>&lt;id&gt;</code> with your reel’s folder name (e.g., <code>dia-48h</code>). The 3 examples in <code>exemplos/</code> were made exactly this way.</p>
 
   <div class="step"><div class="b">1</div><div>
     <h3>Paste the request card with your question</h3>
@@ -277,7 +278,7 @@
 <section id="exemplos"><div class="wrap">
   <span class="chip">Examples</span>
   <h2>3 reels made with the kit itself</h2>
-  <p class="sub">Each has <code>fatos.md</code>, <code>roteiro.json</code>, 3D world code, voice, and audio ready in <code>exemplos/&lt;id&gt;/</code>. Create the MP4 by running <code>npx hyperframes render</code> inside the folder.</p>
+  <p class="sub">Each has <code>fatos.md</code>, <code>roteiro.json</code>, 3D world code, voice, and audio ready in <code>exemplos/&lt;id&gt;/</code>. Create the MP4 by running <code>npx hyperframes render</code> inside the folder. The 3 reels are narrated in Portuguese.</p>
   <div class="ex g3v">
     <figure><video src="../assets/terra-sem-inclinacao.mp4" poster="../assets/terra-capa.jpg" controls preload="none" playsinline></video><figcaption><b>What if Earth had no tilt?</b> Instrument: 23.4° → 0°. Porto Alegre, Manaus, Comandante Ferraz Antarctic Station, the Sun rolling along the polar horizon, and Jupiter. <a href="https://www.youtube.com/watch?v=3YxZzKGvzXM" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>
     <figure><video src="../assets/sol-sumisse.mp4" poster="../assets/sol-capa.jpg" controls preload="none" playsinline></video><figcaption><b>What if the Sun disappeared right now?</b> “Time without the Sun” timer. The light’s 8 minutes 20 seconds, Earth leaving its orbit in a straight line, and life around hydrothermal vents. <a href="https://www.youtube.com/watch?v=sdyzJweL050" target="_blank" rel="noopener">Watch on YouTube ↗</a></figcaption></figure>

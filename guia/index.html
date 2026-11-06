@@ -198,7 +198,8 @@
 <span class="k">bash</span> instalar.sh</pre></div>
     <div class="card"><h3>Voz local (opcional)</h3><p>O <code>voz.py</code> usa o Chatterbox (gera a voz a partir de ~15 s da sua voz gravada) e o Whisper (ouve e marca o tempo de cada palavra), instalados pelo <a href="https://github.com/inematds/inemavox" target="_blank" rel="noopener">inemavox</a> (kit aberto de voz e transcrição local; siga o README dele). Sem eles, use o caminho <b>sem voz</b> do passo 3.</p><pre><span class="k">export</span> INEMAVOX_DIR=<span class="s">~/inemavox</span>          <span class="c"># Whisper + worker do Chatterbox</span>
 <span class="k">export</span> CHATTERBOX_PYTHON=<span class="s">~/miniconda3/envs/chatterbox/bin/python3</span>
-<span class="k">export</span> VC_VOZ=<span class="s">/caminho/sua-voz.wav</span>      <span class="c"># ~15 s limpos</span></pre></div>
+<span class="k">export</span> VC_VOZ=<span class="s">/caminho/sua-voz.wav</span>      <span class="c"># ~15 s limpos</span>
+<span class="k">export</span> VC_IDIOMA=<span class="s">pt</span>                <span class="c"># idioma da voz e do alinhamento (en, es…)</span></pre></div>
   </div>
 </div></section>
 
