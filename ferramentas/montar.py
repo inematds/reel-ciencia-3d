@@ -20,16 +20,43 @@ def norm(w):
     return re.sub(r"[^\wà-ú°%,-]", "", w).strip(",")
 
 
+def estimar(rot, ritmo=2.6):
+    """Tempos de mentira, só pelo texto: para reel sem voz (legenda + música)."""
+    t, frases, bloques, palavras = 0.0, [], [], []
+    pausa, entre = rot.get("pausa", 0.25), rot.get("intervalo_blocos", 0.5)
+    for b in rot["blocos"]:
+        b0 = t
+        for f in b["frases"]:
+            f0 = t
+            for w in f["texto"].split():
+                d = 0.18 + len(re.sub(r"\W", "", w)) * 0.045 + (0.25 if re.search(r"[.,?!]$", w) else 0)
+                palavras.append({"texto": w, "inicio": round(t, 3), "fin": round(t + d * 0.9, 3), "frase": f["id"]})
+                t += d * (2.6 / ritmo)
+            frases.append({"id": f["id"], "bloque": b["id"], "texto": f["texto"], "inicio": round(f0, 3), "fin": round(t, 3)})
+            t += pausa
+        bloques.append({"id": b["id"], "inicio": round(b0, 3), "fin": round(t - pausa, 3)})
+        t += entre
+    return {"id": rot["id"], "duracion": round(t - entre - pausa, 3), "bloques": bloques, "frases": frases, "palabras": palavras}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--projeto", default=".")
     ap.add_argument("--atraso", type=float, default=0.3, help="segundos de silêncio antes da 1ª palavra")
     ap.add_argument("--cauda", type=float, default=2.4, help="segundos depois da última palavra (volta ao título)")
     ap.add_argument("--max", type=int, default=3, help="palavras por grupo de legenda")
+    ap.add_argument("--sem-voz", action="store_true",
+                    help="sem voz local: estima o tempo de cada palavra pelo texto (2,6 palavras/s) e grava voz/<id>/tiempos.json")
     a = ap.parse_args()
     P = pathlib.Path(a.projeto)
     rot = json.loads((P / "roteiro.json").read_text())
-    tm = json.loads((P / "voz" / rot["id"] / "tiempos.json").read_text())
+    arq = P / "voz" / rot["id"] / "tiempos.json"
+    if a.sem_voz:
+        arq.parent.mkdir(parents=True, exist_ok=True)
+        arq.write_text(json.dumps(estimar(rot), ensure_ascii=False))
+    elif not arq.exists():
+        raise SystemExit(f"Falta {arq}: rode ferramentas/voz.py antes, ou use --sem-voz (só legenda e música).")
+    tm = json.loads(arq.read_text())
     off = a.atraso
     tela = [([norm(x) for x in k.split()], v) for k, v in rot.get("tela", {}).items()]
     tela.sort(key=lambda kv: -len(kv[0]))

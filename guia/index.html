@@ -176,9 +176,10 @@
     <span>1 imagem por cena</span><span class="arr">→</span>
     <span>MP4 1080×1920</span>
   </div>
-  <div class="grid g3" style="margin-top:22px">
+  <div class="grid g2" style="margin-top:22px">
     <div class="card"><h3>🧠 Você</h3><p>Escolhe a pergunta e a resposta que o reel tem que provar, aprova o roteiro, olha as imagens paradas e pede uma mudança por vez.</p></div>
     <div class="card"><h3>🤖 Claude Code</h3><p>Pesquisa e confere as fontes, escreve o roteiro, monta a página e o 3D, tira as imagens de conferência e julga o MP4 com as 3 perguntas.</p></div>
+    <div class="card"><h3>📖 Palavras do kit</h3><p><b>HyperFrames</b>: transforma uma página HTML animada em MP4. <b>Three.js</b>: 3D no navegador. <b>Aparelho</b>: o medidor fixo no canto (inclinação, cronômetro). <b>Batida</b>: cada trecho do roteiro. <b>Planta técnica</b>: a aparência azul do mundo "e se". <b>LUFS</b>: a medida de volume das redes (−14).</p></div>
     <div class="card"><h3>⚙️ Scripts do kit</h3><p><code>voz.py</code> (voz + Whisper), <code>montar.py</code> (relógio e legenda), <code>mezcla.py</code> (música em código), <code>preparar.py</code>, e o HyperFrames para conferir e renderizar.</p></div>
   </div>
 </div></section>
@@ -194,7 +195,9 @@
     <div class="card"><h3>Claude Code (ou Codex)</h3><p>O <code>instalar.sh</code> liga a skill nos dois e testa o exemplo.</p><pre><span class="k">git</span> clone https://github.com/inematds/reel-ciencia-3d
 <span class="k">cd</span> reel-ciencia-3d
 <span class="k">bash</span> instalar.sh</pre></div>
-    <div class="card"><h3>Voz local (opcional)</h3><p>Chatterbox + Whisper rodando no computador (GPU ajuda). Para usar a sua voz, grave ~15 s limpos. Sem voz, o reel funciona com legenda e música.</p><pre><span class="k">export</span> VC_VOZ=<span class="s">/caminho/sua-voz.wav</span></pre></div>
+    <div class="card"><h3>Voz local (opcional)</h3><p>O <code>voz.py</code> usa o Chatterbox (gera a voz a partir de ~15 s da sua voz gravada) e o Whisper (ouve e marca o tempo de cada palavra), instalados pelo inemavox. Sem eles, use o caminho <b>sem voz</b> do passo 3.</p><pre><span class="k">export</span> INEMAVOX_DIR=<span class="s">~/inemavox</span>          <span class="c"># Whisper + worker do Chatterbox</span>
+<span class="k">export</span> CHATTERBOX_PYTHON=<span class="s">~/miniconda3/envs/chatterbox/bin/python3</span>
+<span class="k">export</span> VC_VOZ=<span class="s">/caminho/sua-voz.wav</span>      <span class="c"># ~15 s limpos</span></pre></div>
   </div>
 </div></section>
 
@@ -219,16 +222,23 @@
 
   <div class="step"><div class="b">3</div><div>
     <h3>Gere a voz, o relógio e a música</h3>
-    <p>A voz é o relógio do reel: cada legenda, cartão e movimento de câmera sai do tempo das palavras.</p>
-<pre><span class="k">python3</span> ferramentas/voz.py --projeto exemplos/&lt;id&gt; exemplos/&lt;id&gt;/roteiro.json
+    <p>A voz é o relógio do reel: cada legenda, cartão e movimento de câmera sai do tempo das palavras. <code>&lt;rid&gt;</code> é o campo <code>"id"</code> do <code>roteiro.json</code> (nos exemplos: <code>terra</code>, <code>sol</code>, <code>lua</code>). O <code>mezcla.py</code> faz a música em código e mistura com a voz.</p>
+<pre><span class="c"># com voz local</span>
+<span class="k">python3</span> ferramentas/voz.py --projeto exemplos/&lt;id&gt; exemplos/&lt;id&gt;/roteiro.json
 <span class="k">python3</span> ferramentas/montar.py --projeto exemplos/&lt;id&gt;      <span class="c"># → js/tempos.js (legenda pronta)</span>
-<span class="k">python3</span> ferramentas/mezcla.py --projeto exemplos/&lt;id&gt; --id &lt;id-do-roteiro&gt; --musica tranquila</pre>
+<span class="k">python3</span> ferramentas/mezcla.py --projeto exemplos/&lt;id&gt; --id &lt;rid&gt; --musica tranquila
+
+<span class="c"># sem voz: só legenda e música (o tempo de cada palavra é estimado pelo texto)</span>
+<span class="k">python3</span> ferramentas/montar.py --projeto exemplos/&lt;id&gt; --sem-voz   <span class="c"># mostra o "fim" em segundos</span>
+<span class="k">python3</span> ferramentas/mezcla.py --projeto exemplos/&lt;id&gt; --id &lt;rid&gt; --duracao &lt;fim&gt; --musica tranquila</pre>
   </div></div>
 
   <div class="step"><div class="b">4</div><div>
     <h3>O Claude monta a página e o mundo 3D</h3>
-    <p>Ele parte de um exemplo pronto e troca o conteúdo: aparelho no topo, cartões com a linha de fonte, legenda e o <code>js/mundo.js</code> com as cenas.</p>
-<pre><span class="k">python3</span> ferramentas/preparar.py --projeto exemplos/&lt;id&gt;   <span class="c"># motor + duração + som final</span>
+    <p>Ele parte de um exemplo pronto e troca o conteúdo: aparelho no topo, cartões com a linha de fonte, legenda e o <code>js/mundo.js</code> com as cenas. Fazendo à mão, comece copiando o exemplo (sem a voz e o som dele).</p>
+<pre><span class="k">cp</span> exemplos/terra-sem-inclinacao/{index.html,hyperframes.json,package.json} exemplos/&lt;id&gt;/
+<span class="k">cp</span> -r exemplos/terra-sem-inclinacao/js exemplos/&lt;id&gt;/   <span class="c"># depois troque js/mundo.js e os cartões</span>
+<span class="k">python3</span> ferramentas/preparar.py --projeto exemplos/&lt;id&gt;   <span class="c"># motor + duração + som final</span>
 <span class="k">cd</span> exemplos/&lt;id&gt; &amp;&amp; <span class="k">npx</span> hyperframes check            <span class="c"># 0 erros</span></pre>
   </div></div>
 
@@ -262,7 +272,7 @@
 <section id="exemplos"><div class="wrap">
   <span class="chip">Exemplos</span>
   <h2>3 reels feitos com o próprio kit</h2>
-  <p class="sub">Cada um tem <code>fatos.md</code>, <code>roteiro.json</code>, o código do mundo 3D e o MP4 em <code>exemplos/&lt;id&gt;/renders/</code>.</p>
+  <p class="sub">Cada um tem <code>fatos.md</code>, <code>roteiro.json</code>, o código do mundo 3D, a voz e o som prontos em <code>exemplos/&lt;id&gt;/</code>. O MP4 sai com <code>npx hyperframes render</code> dentro da pasta.</p>
   <div class="ex g3v">
     <figure><video src="assets/terra-sem-inclinacao.mp4" poster="assets/terra-capa.jpg" controls preload="none" playsinline></video><figcaption><b>E se a Terra não tivesse inclinação?</b> Aparelho 23,4° → 0°. Porto Alegre, Manaus, Estação Antártica Comandante Ferraz, o Sol rolando no horizonte do polo e Júpiter.</figcaption></figure>
     <figure><video src="assets/sol-sumisse.mp4" poster="assets/sol-capa.jpg" controls preload="none" playsinline></video><figcaption><b>E se o Sol sumisse agora?</b> Cronômetro "tempo sem Sol". Os 8 min 20 s da luz, a Terra saindo da órbita em linha reta e a vida nas fontes hidrotermais.</figcaption></figure>

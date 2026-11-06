@@ -8,7 +8,7 @@ Use a skill reel-ciencia-3d. Faça um reel vertical de ~60 s: "<E se …?>". Hyp
 2. Uma pergunta, uma resposta: <a resposta em uma linha>. Batidas em escala crescente: <você> → <uma cidade brasileira> → <um lugar extremo> → <o planeta> → <o espaço> → <a volta>.
 3. <Um aparelho: medidor, contador ou cronômetro> fica na tela o reel inteiro. O último quadro repete o primeiro.
 4. Visual: STYLE.md. Amarelo só para <a coisa principal da história>. Cada cartão com número mostra a fonte.
-5. Voz do Nei local (ferramentas/voz.py), legenda palavra a palavra, música em código.
+5. Voz local (ferramentas/voz.py com a minha voz em VC_VOZ; se eu não tiver voz local, montar.py --sem-voz), legenda palavra a palavra, música em código.
 6. Me mostre uma imagem parada por cena antes de renderizar. Depois renderize o MP4.
 ```
 
@@ -22,7 +22,7 @@ Use a skill reel-ciencia-3d. Faça um reel vertical de ~60 s: "E se o dia durass
 2. Uma pergunta, uma resposta: noites e dias mais longos e mais extremos. Batidas: sua janela → São Paulo → o Saara → o planeta → a Lua → a volta.
 3. Um relógio "HORAS DO DIA" fica na tela o reel inteiro. O último quadro repete o primeiro.
 4. Visual: STYLE.md. Amarelo só para o Sol. Cada cartão com número mostra a fonte.
-5. Voz do Nei local (ferramentas/voz.py), legenda palavra a palavra, música em código.
+5. Voz local (ferramentas/voz.py com a minha voz em VC_VOZ; se eu não tiver voz local, montar.py --sem-voz), legenda palavra a palavra, música em código.
 6. Me mostre uma imagem parada por cena antes de renderizar. Depois renderize o MP4.
 ```
 
