@@ -1,0 +1,167 @@
+{
+ "id": "sol",
+ "pausa": 0.22,
+ "intervalo_blocos": 0.45,
+ "voz": "nei",
+ "tela": {
+  "oito minutos e vinte segundos": "8 min 20 s",
+  "8 minutos e 20 segundos": "8 min 20 s",
+  "doze e oito": "12h08",
+  "12 e 8": "12h08",
+  "12h08": "12h08",
+  "12:08": "12h08",
+  "oito minutos": "8 min",
+  "8 minutos": "8 min",
+  "trinta quilômetros por segundo": "30 km/s",
+  "30 quilômetros por segundo": "30 km/s",
+  "30 km por segundo": "30 km/s",
+  "quatro horas": "4 h",
+  "4 horas": "4 h",
+  "uma hora": "1 h",
+  "vinte graus": "20 °C",
+  "20 graus": "20 °C",
+  "dois ou três dias": "2 ou 3 dias",
+  "2 ou 3 dias": "2 ou 3 dias",
+  "zero": "0 °C"
+ },
+ "destaques": [
+  "Sol",
+  "nada",
+  "luz",
+  "Brasília",
+  "apaga",
+  "apagaria",
+  "Lua",
+  "estrelas",
+  "gravidade",
+  "órbita",
+  "reta",
+  "Júpiter",
+  "esfria",
+  "frio",
+  "hidrotermais",
+  "micróbios",
+  "química",
+  "silêncio"
+ ],
+ "blocos": [
+  {
+   "id": "b0",
+   "frases": [
+    {
+     "id": "titulo",
+     "texto": "E se o Sol sumisse agora?"
+    }
+   ]
+  },
+  {
+   "id": "b1",
+   "frases": [
+    {
+     "id": "nada",
+     "texto": "Por cerca de oito minutos e vinte segundos, você não perceberia nada."
+    },
+    {
+     "id": "caminho",
+     "texto": "A luz ainda estaria a caminho."
+    }
+   ]
+  },
+  {
+   "id": "b2",
+   "frases": [
+    {
+     "id": "brasilia",
+     "texto": "Em Brasília, se o Sol sumisse ao meio-dia, o céu apagaria perto das doze e oito."
+    }
+   ]
+  },
+  {
+   "id": "b3",
+   "frases": [
+    {
+     "id": "lua",
+     "texto": "A Lua só reflete o Sol. Ela apaga quase junto."
+    },
+    {
+     "id": "estrelas",
+     "texto": "As estrelas continuam lá."
+    }
+   ]
+  },
+  {
+   "id": "b4",
+   "frases": [
+    {
+     "id": "gravidade",
+     "texto": "A gravidade também viaja na velocidade da luz."
+    },
+    {
+     "id": "orbita",
+     "texto": "Nesses oito minutos, a Terra continua na órbita."
+    }
+   ]
+  },
+  {
+   "id": "b5",
+   "frases": [
+    {
+     "id": "jupiter",
+     "texto": "Júpiter ainda brilharia por mais de uma hora."
+    }
+   ]
+  },
+  {
+   "id": "b6",
+   "frases": [
+    {
+     "id": "reta",
+     "texto": "Sem o Sol, a Terra sai em linha reta, a cerca de trinta quilômetros por segundo."
+    },
+    {
+     "id": "horas",
+     "texto": "Em menos de quatro horas, percorre a distância até a Lua."
+    }
+   ]
+  },
+  {
+   "id": "b7",
+   "frases": [
+    {
+     "id": "esfria",
+     "texto": "A Terra esfria cerca de vinte graus por dia, no começo."
+    },
+    {
+     "id": "dias",
+     "texto": "Em dois ou três dias, quase o mundo todo fica abaixo de zero."
+    }
+   ]
+  },
+  {
+   "id": "b8",
+   "frases": [
+    {
+     "id": "plantas",
+     "texto": "As plantas acabariam morrendo."
+    },
+    {
+     "id": "fontes",
+     "texto": "Mas no fundo do mar, nas fontes hidrotermais, micróbios vivem de química, não de luz."
+    }
+   ]
+  },
+  {
+   "id": "b9",
+   "frases": [
+    {
+     "id": "silencio",
+     "texto": "Tudo isso começa com oito minutos de silêncio."
+    },
+    {
+     "id": "volta",
+     "texto": "E se o Sol sumisse agora?"
+    }
+   ]
+  }
+ ]
+}

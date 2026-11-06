@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pt-BR" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script type="importmap">{ "imports": { "three": "./motor/lib/three.module.min.js" } }</script>
+<link rel="stylesheet" href="motor/reel.css" />
+<style>
+  /* só deste reel: aparelho com cronômetro + termômetro; cartões um pouco mais baixos (o aparelho é mais alto) */
+  #aparelho { width: 452px; }
+  #aparelho .lbl { font-size: 28px; }
+  .cartao .cab { font-size: 29px; }
+  .dupla small { font-size: 28px; }
+  .meio span { font-size: 28px; }
+  #aparelho .linha { justify-content: space-between; }
+  #ap-num { min-width: 0; white-space: nowrap; }
+  #ap-sol { width: 80px; height: 80px; }
+  #aparelho .termo { display: flex; align-items: center; gap: 16px; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(156,195,230,.22); }
+  #aparelho .termo svg { width: 34px; height: 92px; flex: none; }
+  #aparelho .termo small { display: block; font-size: 28px; letter-spacing: .06em; color: var(--mut); }
+  #ap-temp { display: block; font-size: 52px; color: var(--amarelo); line-height: 1.1; }
+  .cartao { top: 560px; }
+  .cartao.baixo { top: auto; bottom: 700px; }
+  .cartao .selo { display: inline-block; margin-left: 12px; padding: 2px 12px; border-radius: 8px; font-size: 28px; letter-spacing: .08em;
+    color: #c4e2ff; border: 1.5px solid rgba(196,226,255,.55); vertical-align: 4px; }
+  .grande.med { font-size: 120px; }
+  .dupla b.m { font-size: 60px; }
+  .dupla .sub { display: block; font: 700 28px Inter, sans-serif; color: var(--mut); margin-top: 6px; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="68.21" data-width="1080" data-height="1920">
+  <canvas id="world" width="1080" height="1920"></canvas>
+
+  <!-- o aparelho: cronômetro desde o sumiço + variação de temperatura média (estimativa) -->
+  <div id="aparelho">
+    <div class="lbl">TEMPO SEM SOL</div>
+    <div class="linha">
+      <div id="ap-num">00:00</div>
+      <svg id="ap-sol" viewBox="0 0 100 100" aria-hidden="true">
+        <circle id="ap-disco" cx="50" cy="50" r="30" fill="#FACC15" />
+        <circle id="ap-contorno" cx="50" cy="50" r="30" fill="none" stroke="#9cc3e6" stroke-width="3" stroke-dasharray="6 5" opacity="0" />
+      </svg>
+    </div>
+    <div class="termo">
+      <svg viewBox="0 0 34 92" aria-hidden="true">
+        <rect x="11" y="4" width="12" height="66" rx="6" fill="#161c26" stroke="#9cc3e6" stroke-width="2" />
+        <rect id="ap-coluna" x="14" y="20" width="6" height="56" rx="3" fill="#FACC15" />
+        <circle cx="17" cy="78" r="11" fill="#FACC15" stroke="#9cc3e6" stroke-width="2" />
+      </svg>
+      <div><small id="ap-tlbl">ESFRIA (ESTIM.)</small><b id="ap-temp">0 °C</b></div>
+    </div>
+  </div>
+
+  <!-- título: quadro 0 (capa) e de novo no fim, para o reel voltar ao começo -->
+  <div class="titulo" data-de="0" data-ate="nada+0.35" data-sobe="nao">
+    <div class="chip">E SE…?</div>
+    <h1>E se o Sol <em>sumisse</em> agora?</h1>
+  </div>
+  <div class="titulo" data-de="volta.fim+0.25" data-ate="99999" data-sobe="nao">
+    <div class="chip">E SE…?</div>
+    <h1>E se o Sol <em>sumisse</em> agora?</h1>
+  </div>
+
+  <!-- b1: a luz ainda está a caminho -->
+  <div class="cartao" data-de="nada+0.9" data-ate="caminho.fim+0.1">
+    <div class="cab">A LUZ DO SOL LEVA, ATÉ A TERRA</div>
+    <div class="grande med">8 min 20 s</div>
+    <div class="nota">para atravessar cerca de 150 milhões de km</div>
+    <div class="fonte">FONTE: NASA</div>
+  </div>
+
+  <!-- b2: Brasília ao meio-dia -->
+  <div class="cartao" data-de="brasilia+1.1" data-ate="b3-0.2">
+    <div class="cab">BRASÍLIA · SE O SOL SUMISSE AO MEIO-DIA <span class="selo">CÁLCULO</span></div>
+    <div class="dupla"><div><small>O SOL SOME</small><b class="m">12h00</b></div><div><small>O CÉU APAGA</small><b class="m">12h08</b></div></div>
+    <div class="fonte">12h + 8 MIN 20 S DE LUZ (NASA)</div>
+  </div>
+
+  <!-- b3: a Lua apaga -->
+  <div class="cartao" data-de="lua+0.7" data-ate="b4-0.2">
+    <div class="cab">A LUA APAGA DEPOIS DO CÉU <span class="selo">CÁLCULO</span></div>
+    <div class="grande med">+1,3 s</div>
+    <div class="nota">ela fica a 384.400 km: a luz refletida leva esse tempo para chegar</div>
+    <div class="fonte">NASA · LIVE SCIENCE (MIT)</div>
+  </div>
+
+  <!-- b4: gravidade na velocidade da luz -->
+  <div class="cartao" data-de="gravidade+0.6" data-ate="b5-0.2">
+    <div class="cab">GRAVIDADE E LUZ CHEGAM JUNTAS</div>
+    <div class="grande med">≈ 2 s</div>
+    <div class="nota">em 2017, depois de 130 milhões de anos-luz, o clarão chegou cerca de 2 s depois das ondas gravitacionais</div>
+    <div class="fonte">FONTE: LIGO / CALTECH · GW170817</div>
+  </div>
+
+  <!-- b5: Júpiter -->
+  <div class="cartao" data-de="jupiter+0.4" data-ate="b6-0.2">
+    <div class="cab">JÚPITER AINDA BRILHA <span class="selo">CÁLCULO</span></div>
+    <div class="dupla">
+      <div><small>SOL → JÚPITER</small><b class="m">43 min</b></div>
+      <div><small>JÚPITER → NÓS</small><b class="m">≥ 35 min</b></div>
+    </div>
+    <div class="nota">mais de 1 h de brilho, no melhor caso</div>
+    <div class="fonte">NASA · 778 E 150 MILHÕES DE KM DO SOL</div>
+  </div>
+
+  <!-- b6: linha reta -->
+  <div class="cartao" data-de="reta+1.6" data-ate="horas-0.15">
+    <div class="cab">VELOCIDADE DA TERRA NA ÓRBITA</div>
+    <div class="grande med">30 km/s</div>
+    <div class="nota">média de 29,78 km/s: sem o Sol, ela segue reto nessa direção</div>
+    <div class="fonte">FONTE: NASA · FICHA DA TERRA</div>
+  </div>
+  <div class="cartao" data-de="horas+0.1" data-ate="b7-0.2">
+    <div class="cab">TERRA → DISTÂNCIA DA LUA <span class="selo">CÁLCULO</span></div>
+    <div class="dupla">
+      <div><small>DISTÂNCIA</small><b class="m">384.400</b><span class="sub">km</span></div>
+      <div><small>A 29,78 KM/S</small><b class="m">3h35</b><span class="sub">menos de 4 h</span></div>
+    </div>
+    <div class="fonte">NASA · 384.400 ÷ 29,78</div>
+  </div>
+
+  <!-- b7: o frio -->
+  <div class="cartao" data-de="esfria+0.9" data-ate="b8-0.2">
+    <div class="cab">ESFRIAMENTO MÉDIO, NO COMEÇO <span class="selo">ESTIMATIVA</span></div>
+    <div class="grande med">−20 °C<small>POR DIA</small></div>
+    <div class="nota">em 2 a 3 dias, quase o mundo todo abaixo de 0 °C</div>
+    <div class="fonte">LIVE SCIENCE · GEORGE MASON UNIV.</div>
+  </div>
+
+  <!-- b8: fontes hidrotermais -->
+  <div class="cartao" data-de="fontes+1.0" data-ate="b9-0.2">
+    <div class="cab">FONTES HIDROTERMAIS · FUNDO DO MAR</div>
+    <div class="dupla">
+      <div><small>PLANTAS</small><b class="m">LUZ</b><span class="sub">fotossíntese</span></div>
+      <div><small>MICRÓBIOS</small><b class="m">QUÍMICA</b><span class="sub">quimiossíntese</span></div>
+    </div>
+    <div class="fonte">FONTE: NOAA</div>
+  </div>
+
+  <div id="leg"></div>
+
+  <audio id="som" class="clip" data-start="0" data-duration="68.21" data-track-index="10" data-volume="1" src="audio/sol/final.wav"></audio>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  tl.to({}, { duration: 68.21 }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["main"] = tl;
+</script>
+<script type="module" src="js/mundo.js"></script>
+</body>
+</html>

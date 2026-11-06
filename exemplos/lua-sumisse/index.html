@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR" data-resolution="portrait">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+<script type="importmap">{ "imports": { "three": "./motor/lib/three.module.min.js" } }</script>
+<link rel="stylesheet" href="motor/reel.css" />
+<style>
+  /* só deste reel: cartões abaixo dos dois aparelhos e acima da legenda */
+  .cartao { top: 600px; }
+  .cartao.baixo { top: auto; bottom: 700px; }
+  #aparelho { width: 400px; }
+  #aparelho .lbl { font-size: 28px; }
+  #aparelho .linha { align-items: baseline; gap: 16px; }
+  #ap-num { min-width: 0; }
+  #ap-un { font-size: 34px; letter-spacing: .04em; white-space: nowrap; }
+  /* régua da maré (topo direito) */
+  #mare { position: absolute; right: 64px; top: 190px; width: 214px; padding: 18px 18px 16px; z-index: 5;
+    background: var(--painel-leve); border: 1.5px solid var(--borda); border-radius: 18px; color: var(--tinta);
+    font-family: "JetBrains Mono", monospace; font-weight: 700; text-align: center; }
+  #mare .lbl { font-size: 28px; letter-spacing: .06em; color: var(--mut); line-height: 1.15; }
+  #mare .tubo { position: relative; width: 70px; height: 190px; margin: 12px auto 0; background: var(--trilho);
+    border: 1.5px solid var(--borda); border-radius: 10px; overflow: hidden; }
+  #mare-agua { position: absolute; left: 0; right: 0; bottom: 0; height: 100%; background: #5fa8e6; }
+  #mare-hach { position: absolute; left: 0; right: 0; bottom: 0; height: 0; opacity: 0;
+    background: repeating-linear-gradient(-45deg, rgba(196,226,255,.85) 0 6px, rgba(43,68,98,.9) 6px 13px); }
+  #mare .meia { position: absolute; left: -2px; right: -2px; bottom: 50%; border-top: 3px dashed #fff; opacity: .9; }
+  #mare-num { margin-top: 10px; font-size: 44px; color: var(--amarelo); line-height: 1.1; }
+  #mare-selo { margin-top: 8px; font-size: 28px; color: #1a2330; background: #c4e2ff; border-radius: 8px; padding: 2px 6px; opacity: 0; }
+  .cartao .grande small.br { display: block; margin: 8px 0 0; font-size: 34px; }
+  .cartao .nota b { color: var(--amarelo); }
+  .barra.sol .enche { background: #c4e2ff; }
+  .selo { display: inline-block; font-size: 28px; color: #1a2330; background: #c4e2ff; border-radius: 8px; padding: 2px 10px; margin-left: 12px; vertical-align: 6px; }
+  .dupla b.m { font-size: 52px; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="66.37" data-width="1080" data-height="1920">
+  <canvas id="world" width="1080" height="1920"></canvas>
+
+  <!-- aparelho 1: há quanto tempo a Terra está sem Lua (a unidade cresce com a escala) -->
+  <div id="aparelho">
+    <div class="lbl">SEM LUA HÁ</div>
+    <div class="linha"><div id="ap-num">0</div><div id="ap-un">NOITES</div></div>
+  </div>
+
+  <!-- aparelho 2: régua da maré média em São Luís -->
+  <div id="mare">
+    <div class="lbl">MARÉ<br>S. LUÍS</div>
+    <div class="tubo"><div id="mare-agua"></div><div id="mare-hach"></div><div class="meia"></div></div>
+    <div id="mare-num">4,6 m</div>
+    <div id="mare-selo">ESTIMATIVA</div>
+  </div>
+
+  <!-- título: quadro 0 (capa) e de novo no fim, para o reel voltar ao começo -->
+  <div class="titulo" data-de="0" data-ate="titulo.fim+0.5" data-sobe="nao">
+    <div class="chip">E SE…?</div>
+    <h1>E se a <em>Lua</em> sumisse?</h1>
+  </div>
+  <div class="titulo" data-de="volta.fim+0.25" data-ate="99999" data-sobe="nao">
+    <div class="chip">E SE…?</div>
+    <h1>E se a <em>Lua</em> sumisse?</h1>
+  </div>
+
+  <!-- b1: o brilho da Lua cheia -->
+  <div class="cartao" data-de="brilho+0.6" data-ate="b2-0.2">
+    <div class="cab">LUA CHEIA × SOL · BRILHO NO CÉU</div>
+    <div class="grande">400 mil×<small class="br">MAIS FRACA QUE O SOL</small></div>
+    <div class="nota" data-de="escura+0.4" data-sobe="nao">sem ela: toda noite como a de <b>lua nova</b></div>
+    <div class="fonte">CÁLCULO: MAGNITUDES −12,74 E −26,74 · NASA NSSDC</div>
+  </div>
+
+  <!-- b2: São Luís -->
+  <div class="cartao" data-de="sluis+1.0" data-ate="puxa-0.1">
+    <div class="cab">SÃO LUÍS (MA) · MARÉ MÉDIA</div>
+    <div class="grande">4,6 m<small>SOBE E DESCE</small></div>
+    <div class="nota">e pode chegar a <b>8 m</b></div>
+    <div class="fonte">FONTE: CPRM/ANA · SIMPÓSIO BRAS. DE RECURSOS HÍDRICOS 2019</div>
+  </div>
+  <div class="cartao" data-de="puxa+0.2" data-ate="b3-0.2">
+    <div class="cab">QUEM FAZ A MARÉ · FORÇA</div>
+    <div class="barra" data-de="puxa+0.6" data-sobe="nao"><div class="nome">LUA</div><div class="val"><span data-de="puxa+0.6" data-ate="sobra+0.6" data-sobe="nao">1</span><span data-de="sobra+0.8" data-sobe="nao">0</span></div>
+      <div class="trilho"><div class="enche" data-larg="0>1@puxa+0.7;1>0@sobra+0.2"></div></div></div>
+    <div class="barra sol" data-de="sobra+1.2" data-sobe="nao"><div class="nome">SOL</div><div class="val"><span data-de="sobra+1.2" data-sobe="nao">≈ ½</span></div>
+      <div class="trilho"><div class="enche" data-larg="0>0.5@sobra+1.3"></div></div></div>
+    <div class="fonte">FONTE: NOAA · NASA</div>
+  </div>
+
+  <!-- b3: corais -->
+  <div class="cartao" data-de="corais+0.8" data-ate="b4-0.2">
+    <div class="cab">GRANDE BARREIRA DE CORAIS · DESOVA EM MASSA</div>
+    <div class="dupla"><div><small>SINAL</small><b class="m">LUA CHEIA</b></div><div><small>DESOVA</small><b class="m">DIAS DEPOIS</b></div></div>
+    <div class="fonte">FONTE: KANIEWSKA ET AL. · eLIFE 2015</div>
+  </div>
+
+  <!-- b4: as barrigas de maré -->
+  <div class="cartao" data-de="barrigas+0.9" data-ate="b5-0.2">
+    <div class="cab">SEM LUA, NUMA MARÉ DE LUA CHEIA, SOBRA</div>
+    <div class="grande">≈ 1/3<small>DA MARÉ</small></div>
+    <div class="fonte">CÁLCULO: 0,46 ÷ 1,46 · MARÉ DE EQUILÍBRIO · NOAA</div>
+  </div>
+
+  <!-- b5: o eixo -->
+  <div class="cartao" data-de="eixo+0.6" data-ate="discute-0.1">
+    <div class="cab">EIXO DA TERRA · HOJE, COM A LUA</div>
+    <div class="grande">23,3°<small>± 1,3°</small></div>
+    <div class="fonte">FONTE: LASKAR ET AL. · NATURE 1993</div>
+  </div>
+  <div class="cartao" data-de="discute+0.2" data-ate="b6-0.2">
+    <div class="cab">SEM LUA, QUANTO O EIXO VARIA? <span class="selo">EM DEBATE</span></div>
+    <div class="dupla"><div><small>ESTUDO DE 1993</small><b class="m">0° a 85°</b></div><div><small>ESTUDO DE 2012</small><b class="m">20–25°</b></div></div>
+    <div class="nota">2012: oscilaria numa faixa de 20° a 25° de amplitude</div>
+    <div class="fonte">FONTES: LASKAR, NATURE 1993 · LISSAUER, ICARUS 2012</div>
+  </div>
+
+  <!-- b6: a distância -->
+  <div class="cartao" data-de="longe+0.8" data-ate="b7-0.2">
+    <div class="cab">A LUA, HOJE</div>
+    <div class="dupla"><div><small>DISTÂNCIA MÉDIA</small><b class="m">384.400 km</b></div><div><small>SE AFASTA</small><b class="m">3,8 cm/ano</b></div></div>
+    <div class="fonte">FONTE: NASA SCIENCE · NASA NSSDC</div>
+  </div>
+
+  <div id="leg"></div>
+
+  <audio id="som" class="clip" data-start="0" data-duration="66.37" data-track-index="10" data-volume="1" src="audio/lua/final.wav"></audio>
+</div>
+<script>
+  const tl = gsap.timeline({ paused: true });
+  tl.to({}, { duration: 66.37 }, 0);
+  window.__timelines = window.__timelines || {}; window.__timelines["main"] = tl;
+</script>
+<script type="module" src="js/mundo.js"></script>
+</body>
+</html>

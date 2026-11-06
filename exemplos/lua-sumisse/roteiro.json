@@ -1,0 +1,37 @@
+{
+  "id": "lua",
+  "pausa": 0.22,
+  "intervalo_blocos": 0.45,
+  "voz": "nei",
+  "tela": {
+    "quatrocentas mil vezes": "400 mil vezes", "400 mil vezes": "400 mil vezes", "400000 vezes": "400 mil vezes",
+    "quatro vírgula seis metros": "4,6 m", "4,6 metros": "4,6 m", "4 6 metros": "4,6 m",
+    "vinte e três graus": "23°", "23 graus": "23°",
+    "trezentos e oitenta e quatro mil quilômetros": "384 mil km", "384 mil quilômetros": "384 mil km", "384000 quilômetros": "384 mil km",
+    "três vírgula oito centímetros": "3,8 cm", "3,8 centímetros": "3,8 cm", "3 8 centímetros": "3,8 cm"
+  },
+  "destaques": ["Lua", "sumisse", "escura", "maré", "metade", "corais", "sinal", "barrigas", "eixo", "discute", "afasta"],
+  "blocos": [
+    {"id": "b0", "frases": [{"id": "titulo", "texto": "E se a Lua sumisse? Hoje à noite, de uma vez."}]},
+    {"id": "b1", "frases": [
+      {"id": "brilho", "texto": "A Lua cheia brilha cerca de quatrocentas mil vezes menos que o Sol."},
+      {"id": "escura", "texto": "Mesmo assim, sem ela, toda noite seria escura como a de lua nova."}
+    ]},
+    {"id": "b2", "frases": [
+      {"id": "sluis", "texto": "Em São Luís, no Maranhão, a maré média sobe e desce quatro vírgula seis metros."},
+      {"id": "puxa", "texto": "Quem puxa essa água é principalmente a Lua."},
+      {"id": "sobra", "texto": "Sem ela, sobraria a maré do Sol, cerca de metade da maré da Lua."}
+    ]},
+    {"id": "b3", "frases": [
+      {"id": "corais", "texto": "Na Grande Barreira, os corais desovam juntos poucos dias depois da lua cheia."},
+      {"id": "sinal", "texto": "Perderiam esse sinal."}
+    ]},
+    {"id": "b4", "frases": [{"id": "barrigas", "texto": "No planeta inteiro, as duas barrigas de água que a Lua puxa ficariam bem menores."}]},
+    {"id": "b5", "frases": [
+      {"id": "eixo", "texto": "A Lua também ajuda a manter o eixo da Terra perto de vinte e três graus."},
+      {"id": "discute", "texto": "Sem ela, ele balançaria mais. Quanto, ainda se discute."}
+    ]},
+    {"id": "b6", "frases": [{"id": "longe", "texto": "Ela está, em média, a trezentos e oitenta e quatro mil quilômetros, e se afasta cerca de três vírgula oito centímetros por ano."}]},
+    {"id": "b7", "frases": [{"id": "volta", "texto": "Hoje, ela ainda está lá. E se a Lua sumisse?"}]}
+  ]
+}

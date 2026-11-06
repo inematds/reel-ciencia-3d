@@ -8,3 +8,5 @@ node_modules/
 guia/assets/*.codex.log
 guia/assets/banner*.png
 longrun/
+exemplos/*/voz.log
+exemplos/*/roteiro-proposto.md
