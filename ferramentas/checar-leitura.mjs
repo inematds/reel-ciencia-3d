@@ -20,7 +20,7 @@ De onde vêm os textos:
   1. o DOM: cada bloco com texto visível (spans e <b> dentro de um título contam como o título);
   2. window.TEXTOS(t), se a página tiver (texto desenhado em canvas/WebGL): [{id, texto, x0, y0, x1, y1}].
 Página HyperFrames (data-composition-id + evento hf-seek, como no reel-ciencia-3d) também vale: o script adapta.
-Contador (número que muda a cada quadro): é UMA peça se só os algarismos mudam; para outros (data, mês) marque o bloco
+Contador (número que muda a cada quadro): valores que passam em < 0,5 s e só mudam nos algarismos viram UMA peça; para outros (data, mês) marque o bloco
 com data-leitura="contador".
 Fica de fora: #subs e #leg (legenda presa à voz) e tudo dentro de [data-leitura="ignorar"] ou de --ignorar "seletor,…".
 
@@ -156,14 +156,27 @@ try {
         const lista = pecas[k] ??= [];
         // mesmo bloco e texto igual ou crescendo (máquina de escrever) = a mesma peça; texto trocado = peça nova
         // contador (só os algarismos mudam, ou o bloco está em [data-leitura="contador"]) = a mesma peça
-        const forma = x => x.replace(/\d+([.,]\d+)?/g, '#');
-        let p = lista.find(x => txt.startsWith(x.texto) || x.texto.startsWith(txt) || (x.contador ??= a.contador) || forma(x.texto) === forma(txt));
+        // [data-leitura="contador"] = a mesma peça mesmo com o texto mudando (contador automático: ver o fim)
+        let p = lista.find(x => txt.startsWith(x.texto) || x.texto.startsWith(txt) || (x.contador ??= a.contador));
         if (!dentro) { if (!p) parcial[k + txt] ??= {id: k, texto: txt, t0: t}; continue; }
         if (!p) { p = {id: k, texto: txt, t0: t, run: 0, feito: false}; lista.push(p); }
         vis.add(p);
         if (!p.feito) { p.run = Math.min(t + STEP, DUR) - p.t0; if (txt.length > p.texto.length) p.texto = txt; }
       }
       for (const k in pecas) for (const p of pecas[k]) if (!vis.has(p)) p.feito = true;   // só a 1ª aparição conta
+    }
+    // contador automático: valores que passam rápido (< 0,5 s cada) e só mudam nos algarismos viram UMA peça com o
+    // valor seguinte. "16:9" parado 4 s que vira "9:16" por 0,5 s continua sendo duas peças (a 2ª é curta de verdade).
+    const forma = x => x.replace(/\d+([.,]\d+)?/g, '#');
+    for (const k in pecas) {
+      const l = pecas[k].sort((a, b) => a.t0 - b.t0), out = [];
+      for (const p of l) {
+        const q = out[out.length - 1];
+        if (q && (q.ult ?? q.run) < 0.5 && forma(q.texto) === forma(p.texto) && p.t0 - (q.t0 + q.run) <= STEP * 1.5) {
+          q.run = p.t0 + p.run - q.t0; q.ult = p.run;   // q.ult: quanto durou o último valor absorvido if (p.texto.length > q.texto.length) q.texto = p.texto;
+        } else out.push(p);
+      }
+      pecas[k] = out;
     }
     const todas = Object.values(pecas).flat();
     for (const k in parcial) if (todas.some(p => p.id === parcial[k].id && (p.texto.startsWith(parcial[k].texto) || parcial[k].texto.startsWith(p.texto)))) delete parcial[k];

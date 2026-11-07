@@ -1,6 +1,6 @@
 ---
 name: reel-ciencia-3d
-version: 1.1.0
+version: 1.1.1
 description: Reel de ciência "E se…?" 9:16 feito só com código — mundo 3D em Three.js dentro do HyperFrames, fatos com fonte na tela, voz local do Nei presa à palavra, música em código, último quadro igual ao primeiro. Gatilho: "reel de ciência", "e se a Terra/Lua/Sol…", "faz um reel e se…", "vídeo de ciência em 3D sem IA de vídeo".
 ---
 
