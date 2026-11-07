@@ -1,5 +1,6 @@
 ---
 name: reel-ciencia-3d
+version: 1.1.0
 description: Reel de ciência "E se…?" 9:16 feito só com código — mundo 3D em Three.js dentro do HyperFrames, fatos com fonte na tela, voz local do Nei presa à palavra, música em código, último quadro igual ao primeiro. Gatilho: "reel de ciência", "e se a Terra/Lua/Sol…", "faz um reel e se…", "vídeo de ciência em 3D sem IA de vídeo".
 ---
 
@@ -22,6 +23,7 @@ Nada neste reel é desenhado por IA de imagem ou de vídeo. Render, voz e músic
 | 7 | Página (`index.html`: aparelho, título, cartões com fonte, legenda) + mundo 3D (`js/mundo.js`) | 🤖 Claude | ver "Como montar" abaixo |
 | 8 | Preparar (copia o motor, duração, som final) | ⚙️ script | `python3 ferramentas/preparar.py --projeto exemplos/<id>` |
 | 9 | Teste | ⚙️ | `npx hyperframes check` → 0 erros |
+| 9b | **Tempo de leitura** de cada texto da tela (cartões, fontes, dados, chamada) | ⚙️ script | `node ferramentas/checar-leitura.mjs --project exemplos/<id> --step 0.1` → 0 (1 = algum texto some antes de ler: segure mais ou corte palavras; 2 = não verificou). Contador do aparelho = uma peça; data que muda → `data-leitura="contador"`; `#leg` fica de fora |
 | 10 | **Uma imagem parada por cena antes de renderizar** | 🤖 tira, 🧠 julga | `npx hyperframes snapshot --at 0,<meio de cada bloco>,<fim> --no-end -o stills` |
 | 11 | Julgar com 3 perguntas (`checklists/julgar-quadros.md`); corrigir **uma coisa por vez** | 🧠 + 🤖 | — |
 | 12 | Render | ⚙️ | `npx hyperframes render --output renders/<id>.mp4` (~5 min para 65 s) |

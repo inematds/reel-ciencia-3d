@@ -22,12 +22,12 @@ Uma pergunta "E se…?" vira um reel vertical de ~60 s: mundo 3D (Three.js) dent
 
 | Pasta | O quê |
 |---|---|
-| `SKILL.md` | A skill para Claude Code / Codex: o processo de 13 passos e as peças do motor |
+| `SKILL.md` | A skill para Claude Code / Codex: o processo de 14 passos e as peças do motor |
 | `STYLE.md` | O visual INEMA dos reels (cores, fontes, lugar de cada coisa, movimento, som, proibidos) |
 | `prompts/` | O cartão de pedido (cole e troque a pergunta) e 8 decisões curtas |
 | `checklists/` | Fatos · julgar os quadros (3 perguntas) · antes de publicar |
 | `motor/` | `base.js` (duas aparências, céu, globo com continentes reais, rótulos, legenda, cartões), `reel.css`, fontes, three.js, contornos Natural Earth |
-| `ferramentas/` | `voz.py` (voz local + tempo de cada palavra), `montar.py` (relógio do reel e legenda), `mezcla.py` (música em código + mistura), `preparar.py` |
+| `ferramentas/` | `voz.py` (voz local + tempo de cada palavra), `montar.py` (relógio do reel e legenda), `mezcla.py` (música em código + mistura), `preparar.py`, `checar-leitura.mjs` (tempo de leitura de cada texto; o mesmo do video-codigo) |
 | `exemplos/` | 3 reels completos, cada um com `fatos.md`, `roteiro.json`, `index.html`, `js/mundo.js`, voz e som prontos (renderize com `npx hyperframes render`; versão leve dos MP4 em `guia/assets/`) |
 
 ## Os 3 exemplos
@@ -51,10 +51,11 @@ Uma pergunta "E se…?" vira um reel vertical de ~60 s: mundo 3D (Three.js) dent
 7. 🤖 Página e mundo 3D (`index.html`, `js/mundo.js`) a partir de um exemplo, copiados antes do passo 4: `mkdir -p exemplos/<id>/js && cp exemplos/terra-sem-inclinacao/{index.html,hyperframes.json,package.json,roteiro.json} exemplos/<id>/ && cp exemplos/terra-sem-inclinacao/js/mundo.js exemplos/<id>/js/` (não copie o `js/tempos.js`: ele é gerado pelo `montar.py`).
 8. ⚙️ `python3 ferramentas/preparar.py --projeto exemplos/<id>`
 9. ⚙️ `npx hyperframes check` → 0 erros.
-10. 🤖 Uma imagem parada por cena: `npx hyperframes snapshot --at <tempos> --no-end -o stills`
-11. 🧠 Julgue com as 3 perguntas (`checklists/julgar-quadros.md`); peça **uma mudança por vez**.
-12. ⚙️ Render: `npx hyperframes render --output renders/<id>.mp4` (~5 min para 65 s).
-13. 🤖+🧠 Julgue o MP4 de verdade e passe o `checklists/antes-de-publicar.md`.
+10. ⚙️ **Tempo de leitura:** `node ferramentas/checar-leitura.mjs --project exemplos/<id> --step 0.1` (ou `preparar.py --leitura`) → 0 = todo cartão, fonte e dado fica na tela o tempo de ser lido (1 s + 0,3 s por palavra, mínimo 1,5 s). Contador que muda a cada quadro (o aparelho) conta como uma peça só; data/mês que muda: marque o bloco com `data-leitura="contador"`. A legenda `#leg` fica de fora (é presa à voz). Rótulos 3D desenhados no WebGL não são lidos — exponha `window.TEXTOS(t)` se quiser conferi-los. Precisa do Playwright: `bash ~/projetos/video-codigo/scripts/preparar-entorno.sh` (instala em `~/.cache`, sem sudo) ou `VIDEO_NODE_MODULES=/pasta/node_modules`.
+11. 🤖 Uma imagem parada por cena: `npx hyperframes snapshot --at <tempos> --no-end -o stills`
+12. 🧠 Julgue com as 3 perguntas (`checklists/julgar-quadros.md`); peça **uma mudança por vez**.
+13. ⚙️ Render: `npx hyperframes render --output renders/<id>.mp4` (~5 min para 65 s).
+14. 🤖+🧠 Julgue o MP4 de verdade e passe o `checklists/antes-de-publicar.md`.
 
 ## Instalar
 

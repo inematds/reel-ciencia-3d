@@ -22,7 +22,7 @@ Una pregunta «¿Y si…?» se convierte en un reel vertical de ~60 s: un mundo 
 
 | Carpeta | Qué |
 |---|---|
-| `SKILL.md` | La skill para Claude Code / Codex: el proceso de 13 pasos y las piezas del motor |
+| `SKILL.md` | La skill para Claude Code / Codex: el proceso de 14 pasos y las piezas del motor |
 | `STYLE.md` | El estilo visual INEMA de los reels (colores, fuentes, ubicación de cada elemento, movimiento, sonido y elementos prohibidos) |
 | `prompts/` | La tarjeta de pedido (copia y cambia la pregunta) y 8 decisiones breves |
 | `checklists/` | Datos · evaluar los cuadros (3 preguntas) · antes de publicar |
@@ -51,10 +51,11 @@ Una pregunta «¿Y si…?» se convierte en un reel vertical de ~60 s: un mundo 
 7. 🤖 Página y mundo 3D (`index.html`, `js/mundo.js`) a partir de un ejemplo, copiados antes del paso 4: `mkdir -p exemplos/<id>/js && cp exemplos/terra-sem-inclinacao/{index.html,hyperframes.json,package.json,roteiro.json} exemplos/<id>/ && cp exemplos/terra-sem-inclinacao/js/mundo.js exemplos/<id>/js/` (no copies `js/tempos.js`: lo genera `montar.py`).
 8. ⚙️ `python3 ferramentas/preparar.py --projeto exemplos/<id>`
 9. ⚙️ `npx hyperframes check` → 0 errores.
-10. 🤖 Una imagen fija por escena: `npx hyperframes snapshot --at <tiempos> --no-end -o stills`
-11. 🧠 Evalúa con las 3 preguntas (`checklists/julgar-quadros.md`); pide **un cambio a la vez**.
-12. ⚙️ Renderizado: `npx hyperframes render --output renders/<id>.mp4` (~5 min para 65 s).
-13. 🤖+🧠 Evalúa el MP4 de verdad y completa `checklists/antes-de-publicar.md`.
+10. ⚙️ **Tiempo de lectura:** `node ferramentas/checar-leitura.mjs --project exemplos/<id> --step 0.1` (o `preparar.py --leitura`) → 0 = cada tarjeta, fuente y dato queda en pantalla el tiempo de leerlo (1 s + 0,3 s por palabra, mínimo 1,5 s). Un contador que cambia en cada cuadro (el aparato) cuenta como una sola pieza; para fecha/mes que cambia, marque el bloque con `data-leitura="contador"`. La leyenda `#leg` queda fuera (va atada a la voz). Las etiquetas 3D dibujadas en WebGL no se leen: exponga `window.TEXTOS(t)` para revisarlas. Necesita Playwright: `bash ~/projetos/video-codigo/scripts/preparar-entorno.sh` (instala en `~/.cache`, sin sudo) o `VIDEO_NODE_MODULES=/carpeta/node_modules`.
+11. 🤖 Una imagen fija por escena: `npx hyperframes snapshot --at <tiempos> --no-end -o stills`
+12. 🧠 Evalúa con las 3 preguntas (`checklists/julgar-quadros.md`); pide **un cambio a la vez**.
+13. ⚙️ Renderizado: `npx hyperframes render --output renders/<id>.mp4` (~5 min para 65 s).
+14. 🤖+🧠 Evalúa el MP4 de verdad y completa `checklists/antes-de-publicar.md`.
 
 ## Instalar
 

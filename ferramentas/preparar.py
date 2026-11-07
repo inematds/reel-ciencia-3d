@@ -5,6 +5,7 @@ Uso:  python3 preparar.py --projeto exemplos/<id>
 1. Copia ../../motor para DIR/motor (cada reel fica completo na própria pasta).
 2. Lê FIM e ATRASO de DIR/js/tempos.js e grava a duração no index.html (onde houver __FIM__ ou a duração antiga).
 3. Som final DIR/audio/<id>/final.wav: a mezcla.wav atrasada ATRASO s, com silêncio até FIM e saída suave.
+4. Com --leitura: roda ferramentas/checar-leitura.mjs (todo texto da tela fica o tempo de ser lido) e sai com o código dele.
 """
 import argparse
 import json
@@ -19,6 +20,7 @@ AQUI = pathlib.Path(__file__).resolve().parent
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--projeto", required=True)
+    ap.add_argument("--leitura", action="store_true", help="no fim, confere o tempo de leitura (precisa do Playwright)")
     a = ap.parse_args()
     P = pathlib.Path(a.projeto).resolve()
     rid = json.loads((P / "roteiro.json").read_text())["id"]
@@ -38,6 +40,9 @@ def main():
                     f"adelay={ms}|{ms},apad=whole_dur={fim},afade=t=out:st={fim - 1.2:.2f}:d=1.2,atrim=0:{fim}",
                     "-ar", "48000", str(dst)], check=True)
     print(f"{P.name}: motor copiado, duração {fim}s, som {dst.relative_to(P)}")
+    if a.leitura:
+        r = subprocess.run(["node", str(AQUI / "checar-leitura.mjs"), "--project", str(P), "--step", "0.1"])
+        raise SystemExit(r.returncode)
 
 
 if __name__ == "__main__":
